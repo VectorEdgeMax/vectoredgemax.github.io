@@ -1,1 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#070b12">
+  <meta name="description" content="VectorEdgeMax profile — cybersecurity learning, ethical hacking education, Linux, networking and development.">
+  <title>Profile | VectorEdgeMax</title>
+  <style>
+    :root {
+      color-scheme: dark; --bg: #070b12; --panel: #0d1522;
+      --cyan: #32e6ff; --blue: #4387ff; --text: #eaf4ff;
+      --muted: #9aabc1; --border: #203348;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh; background: var(--bg); color: var(--text);
+      font-family: system-ui, -apple-system, Segoe UI, sans-serif; line-height: 1.7;
+    }
+    a { color: var(--cyan); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { width: min(900px, 90%); margin: auto; }
+    header { background: #070b12ed; border-bottom: 1px solid var(--border); }
+    nav { min-height: 72px; display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+    .brand { font-size: 1.1rem; font-weight: 850; letter-spacing: 1px; color: white; }
+    .brand span { color: var(--cyan); }
+    .back { border: 1px solid var(--border); border-radius: 8px; padding: 8px 13px; }
+    main { padding: 65px 0; }
+    .profile-card {
+      display: grid; grid-template-columns: 180px 1fr; gap: 32px; align-items: center;
+      padding: 32px; background: var(--panel); border: 1px solid var(--border); border-radius: 20px;
+      box-shadow: 0 0 45px #32e6ff0b;
+    }
+    .avatar {
+      display: block; width: 160px; height: 160px; object-fit: cover; border-radius: 50%;
+      border: 2px solid var(--cyan); box-shadow: 0 0 30px #32e6ff30; margin: auto;
+    }
+    .tagline { color: var(--cyan); font-weight: 750; letter-spacing: .05em; text-transform: uppercase; font-size: .78rem; }
+    h1 { margin: 8px 0 12px; font-size: clamp(2rem, 5vw, 3rem); line-height: 1.2; }
+    .description { color: var(--muted); margin: 0; }
+    .profile-list { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+    .profile-list span { border: 1px solid var(--border); border-radius: 999px; padding: 7px 12px; background: #ffffff05; font-size: .85rem; }
+    .mission { margin-top: 24px; padding: 18px 20px; background: #0b1823; border-left: 3px solid var(--cyan); border-radius: 0 8px 8px 0; color: var(--muted); }
+    footer { border-top: 1px solid var(--border); color: var(--muted); text-align: center; padding: 25px 0; font-size: .9rem; }
+    @media (max-width: 650px) {
+      nav { min-height: 64px; }
+      main { padding: 35px 0; }
+      .profile-card { grid-template-columns: 1fr; padding: 24px; gap: 22px; }
+      .avatar { width: 130px; height: 130px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="container" aria-label="Profile navigation">
+      <a class="brand" href="index.html">VECTOR<span>EDGEMAX</span></a>
+      <a class="back" href="index.html">← Back to Home</a>
+    </nav>
+  </header>
 
+  <main class="container">
+    <div class="profile-card">
+      <img class="avatar" src="Neon Cybersecurity VE Emblem.png" alt="VectorEdgeMax VE logo">
+      <div>
+        <div class="tagline">Cybersecurity Learner · Ethical Hacker · Developer</div>
+        <h1>VectorEdgeMax</h1>
+        <p class="description">
+          I am building a personal space to learn, experiment, and document my work in
+          cybersecurity, Linux, networking, and software development. My goal is to grow
+          responsibly through hands-on practice, clear notes, and useful technical projects.
+        </p>
+        <div class="profile-list">
+          <span>Cybersecurity</span><span>Ethical Hacking</span><span>Linux</span>
+          <span>Networking</span><span>Python</span><span>Development</span>
+        </div>
+      </div>
+    </div>
+    <div class="mission">
+      <strong>My approach:</strong> Learn openly, build useful projects, and practise cybersecurity responsibly.
+      Security testing should only be performed on systems I own or have explicit permission to test.
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p><strong>VECTOR EDGEMAX</strong> · Learn ethically. Build responsibly.</p>
+      <p>© <span id="year">2026</span> VectorEdgeMax. Built for learning.</p>
+    </div>
+  </footer>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
