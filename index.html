@@ -581,10 +581,10 @@
       card.addEventListener('click', playCardSound);
     });
 
-    // Hero Buttons (Explore Topics, View Projects) - Card Sound
+    // Hero Buttons (Explore Topics, View Projects) - Nav Sound (same as nav buttons)
     document.querySelectorAll('.button').forEach((btn) => {
       btn.addEventListener('click', (e) => {
-        playCardSound();
+        playNavSound();
         if (btn.textContent.includes('Explore Topics')) {
           document.getElementById('focus').scrollIntoView({ behavior: 'smooth' });
         } else if (btn.textContent.includes('View Projects')) {
