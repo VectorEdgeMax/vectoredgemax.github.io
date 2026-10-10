@@ -4,49 +4,165 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#070b12">
-  <meta name="description" content="VectorEdgeMax profile — cybersecurity learning, ethical hacking education, Linux, networking and development.">
+  <meta name="description" content="ALEX ALDERSON (VectorEdgeMax) — Cybersecurity learner, ethical hacker, developer exploring security, hacking, and development.">
+  <meta name="author" content="ALEX ALDERSON (VectorEdgeMax)">
+  <meta property="og:title" content="Profile | VectorEdgeMax (ALEX ALDERSON)">
+  <meta property="og:description" content="Cybersecurity learner & developer building tools and knowledge for real-world security challenges.">
+  <meta property="og:type" content="website">
   <title>Profile | VectorEdgeMax</title>
   <style>
     :root {
-      color-scheme: dark; --bg: #070b12; --panel: #0d1522;
-      --cyan: #32e6ff; --blue: #4387ff; --text: #eaf4ff;
-      --muted: #9aabc1; --border: #203348;
+      color-scheme: dark;
+      --bg: #070b12;
+      --panel: #0d1522;
+      --cyan: #32e6ff;
+      --neon-green: #0ffe0e;
+      --danger-red: #ff3333;
+      --text: #eaf4ff;
+      --muted: #9aabc1;
+      --border: #203348;
+      --border-accent: #1a4d2e;
     }
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0; min-height: 100vh; background: var(--bg); color: var(--text);
-      font-family: system-ui, -apple-system, Segoe UI, sans-serif; line-height: 1.7;
+      font-family: 'Courier New', Courier, monospace, system-ui, -apple-system, Segoe UI, sans-serif; 
+      line-height: 1.7;
     }
-    a { color: var(--cyan); text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    a { color: var(--cyan); text-decoration: none; transition: color 0.3s, text-shadow 0.3s; }
+    a:hover { text-decoration: underline; color: var(--neon-green); text-shadow: 0 0 8px var(--neon-green); }
     .container { width: min(900px, 90%); margin: auto; }
-    header { background: #070b12ed; border-bottom: 1px solid var(--border); }
-    nav { min-height: 72px; display: flex; justify-content: space-between; align-items: center; gap: 20px; }
-    .brand { font-size: 1.1rem; font-weight: 850; letter-spacing: 1px; color: white; }
-    .brand span { color: var(--cyan); }
-    .back { border: 1px solid var(--border); border-radius: 8px; padding: 8px 13px; }
+    header {
+      background: #070b12ed;
+      border-bottom: 2px solid var(--cyan);
+      box-shadow: 0 0 20px #32e6ff20;
+      backdrop-filter: blur(12px);
+    }
+    nav {
+      min-height: 72px; display: flex; justify-content: space-between; align-items: center; gap: 20px;
+    }
+    .brand {
+      font-size: 1.2rem; font-weight: 850; letter-spacing: 2px; color: white;
+      font-family: 'Courier New', monospace;
+    }
+    .brand span { color: var(--cyan); text-shadow: 0 0 10px #32e6ff; }
+    .back {
+      border: 1.5px solid var(--neon-green); border-radius: 8px; padding: 8px 13px;
+      color: var(--neon-green); font-weight: 600;
+      transition: all 0.3s;
+      font-family: 'Courier New', monospace;
+    }
+    .back:hover {
+      background: var(--neon-green); color: #070b12;
+      box-shadow: 0 0 20px #0ffe0e40;
+    }
     main { padding: 65px 0; }
     .profile-card {
-      display: grid; grid-template-columns: 180px 1fr; gap: 32px; align-items: center;
-      padding: 32px; background: var(--panel); border: 1px solid var(--border); border-radius: 20px;
-      box-shadow: 0 0 45px #32e6ff0b;
+      display: grid; grid-template-columns: 200px 1fr; gap: 40px; align-items: center;
+      padding: 40px; background: var(--panel); border: 1px solid var(--border-accent);
+      border-radius: 14px;
+      box-shadow: 0 0 40px #32e6ff15, inset 0 0 20px #0ffe0e05;
     }
     .avatar {
-      display: block; width: 160px; height: 160px; object-fit: cover; border-radius: 50%;
-      border: 2px solid var(--cyan); box-shadow: 0 0 30px #32e6ff30; margin: auto;
+      display: block; width: 180px; height: 180px; object-fit: cover; border-radius: 50%;
+      border: 3px solid var(--cyan); box-shadow: 0 0 30px #32e6ff40;
+      margin: auto; transition: transform 0.3s, box-shadow 0.3s;
     }
-    .tagline { color: var(--cyan); font-weight: 750; letter-spacing: .05em; text-transform: uppercase; font-size: .78rem; }
-    h1 { margin: 8px 0 12px; font-size: clamp(2rem, 5vw, 3rem); line-height: 1.2; }
-    .description { color: var(--muted); margin: 0; }
-    .profile-list { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
-    .profile-list span { border: 1px solid var(--border); border-radius: 999px; padding: 7px 12px; background: #ffffff05; font-size: .85rem; }
-    .mission { margin-top: 24px; padding: 18px 20px; background: #0b1823; border-left: 3px solid var(--cyan); border-radius: 0 8px 8px 0; color: var(--muted); }
-    footer { border-top: 1px solid var(--border); color: var(--muted); text-align: center; padding: 25px 0; font-size: .9rem; }
-    @media (max-width: 650px) {
-      nav { min-height: 64px; }
+    .avatar:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 50px #0ffe0e40;
+      border-color: var(--neon-green);
+    }
+    .profile-info h1 {
+      margin: 0 0 8px; font-size: clamp(2rem, 5vw, 3rem); line-height: 1.2;
+      color: var(--text);
+    }
+    .tagline {
+      color: var(--neon-green); font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; font-size: 0.9rem; margin-bottom: 12px;
+      font-family: 'Courier New', monospace;
+    }
+    .description { color: var(--muted); margin: 15px 0; font-size: 1rem; line-height: 1.8; }
+    .profile-tags {
+      display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px;
+    }
+    .tag {
+      border: 1px solid var(--neon-green); border-radius: 20px; padding: 6px 14px;
+      background: #0a1f2e; color: var(--neon-green); font-size: 0.85rem;
+      font-weight: 600; transition: all 0.3s;
+      font-family: 'Courier New', monospace;
+    }
+    .tag:hover {
+      background: var(--neon-green); color: #070b12;
+      box-shadow: 0 0 15px #0ffe0e40;
+    }
+    .mission {
+      margin-top: 40px; padding: 24px 28px; background: #0a1f2e;
+      border-left: 4px solid var(--neon-green); border-radius: 0 8px 8px 0;
+      color: var(--text); box-shadow: inset 0 0 10px #0ffe0e10;
+    }
+    .mission strong { color: var(--neon-green); }
+    .stats-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px;
+    }
+    .stat-card {
+      background: #0d1522; border: 1px solid var(--border-accent); border-radius: 8px;
+      padding: 20px; text-align: center; transition: all 0.3s;
+    }
+    .stat-card:hover {
+      border-color: var(--neon-green);
+      box-shadow: 0 0 20px #0ffe0e20;
+    }
+    .stat-number {
+      font-size: 2rem; font-weight: 700; color: var(--cyan);
+      text-shadow: 0 0 10px #32e6ff30;
+    }
+    .stat-label { color: var(--muted); font-size: 0.9rem; margin-top: 8px; }
+    .cta-buttons {
+      display: flex; gap: 15px; margin-top: 30px; flex-wrap: wrap;
+    }
+    .cta-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 11px 20px; border: 1.5px solid var(--cyan);
+      border-radius: 8px; color: var(--cyan); font-weight: 700;
+      transition: all 0.3s;
+      font-family: 'Courier New', monospace;
+    }
+    .cta-btn.primary {
+      background: var(--cyan); color: #070b12;
+      box-shadow: 0 0 15px #32e6ff40;
+    }
+    .cta-btn.primary:hover {
+      background: var(--neon-green);
+      border-color: var(--neon-green);
+      box-shadow: 0 0 25px #0ffe0e60;
+    }
+    .cta-btn:hover {
+      background: transparent;
+      color: var(--neon-green);
+      border-color: var(--neon-green);
+      box-shadow: 0 0 20px #0ffe0e40;
+    }
+    footer {
+      border-top: 2px solid var(--cyan);
+      color: var(--muted); text-align: center; padding: 30px 0; font-size: 0.9rem;
+      background: linear-gradient(to bottom, transparent, #0a1f2e20);
+    }
+    footer p strong { color: var(--neon-green); }
+    @media (max-width: 800px) {
+      .profile-card { grid-template-columns: 1fr; gap: 25px; padding: 30px; }
+      .avatar { width: 150px; height: 150px; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      nav { flex-direction: column; gap: 12px; align-items: flex-start; }
+      .brand { font-size: 1rem; }
       main { padding: 35px 0; }
-      .profile-card { grid-template-columns: 1fr; padding: 24px; gap: 22px; }
+      .profile-card { padding: 24px; gap: 20px; }
       .avatar { width: 130px; height: 130px; }
+      .stats-grid { grid-template-columns: 1fr; }
+      .cta-buttons { flex-direction: column; }
     }
   </style>
 </head>
@@ -54,39 +170,75 @@
   <header>
     <nav class="container" aria-label="Profile navigation">
       <a class="brand" href="index.html">VECTOR<span>EDGEMAX</span></a>
-      <a class="back" href="index.html">← Back to Home</a>
+      <a class="back" href="index.html">← Back Home</a>
     </nav>
   </header>
 
   <main class="container">
     <div class="profile-card">
-      <img class="avatar" src="Neon Cybersecurity VE Emblem.png" alt="VectorEdgeMax VE logo">
-      <div>
-        <div class="tagline">Cybersecurity Learner · Ethical Hacker · Developer</div>
+      <img class="avatar" src="Neon Cybersecurity VE Emblem.png" alt="VectorEdgeMax profile emblem">
+      
+      <div class="profile-info">
+        <div class="tagline">→ ALEX ALDERSON</div>
         <h1>VectorEdgeMax</h1>
+        
         <p class="description">
-          I am building a personal space to learn, experiment, and document my work in
-          cybersecurity, Linux, networking, and software development. My goal is to grow
-          responsibly through hands-on practice, clear notes, and useful technical projects.
+          Cybersecurity learner & ethical hacker exploring vulnerability research, payload crafting, 
+          Linux administration, and security tool development. Building practical knowledge and useful 
+          projects to serve real-world security challenges responsibly.
         </p>
-        <div class="profile-list">
-          <span>Cybersecurity</span><span>Ethical Hacking</span><span>Linux</span>
-          <span>Networking</span><span>Python</span><span>Development</span>
+
+        <div class="profile-tags">
+          <span class="tag">Cybersecurity</span>
+          <span class="tag">Ethical Hacking</span>
+          <span class="tag">Linux</span>
+          <span class="tag">Networking</span>
+          <span class="tag">Payload Making</span>
+          <span class="tag">Python</span>
+        </div>
+
+        <div class="cta-buttons">
+          <a href="https://github.com/VectorEdgeMax" class="cta-btn primary" target="_blank" rel="noopener noreferrer">
+            → View GitHub
+          </a>
+          <a href="index.html" class="cta-btn">
+            ← Home
+          </a>
         </div>
       </div>
     </div>
+
     <div class="mission">
-      <strong>My approach:</strong> Learn openly, build useful projects, and practise cybersecurity responsibly.
-      Security testing should only be performed on systems I own or have explicit permission to test.
+      <strong>Philosophy:</strong> Learn ethically, build responsibly, practice security on authorized systems only. 
+      All security testing and research is conducted with explicit permission and within legal and ethical boundaries.
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-number">&gt;6</div>
+        <div class="stat-label">Focus Areas</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">∞</div>
+        <div class="stat-label">Always Learning</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">→</div>
+        <div class="stat-label">Projects Building</div>
+      </div>
     </div>
   </main>
 
   <footer>
     <div class="container">
-      <p><strong>VECTOR EDGEMAX</strong> · Learn ethically. Build responsibly.</p>
-      <p>© <span id="year">2026</span> VectorEdgeMax. Built for learning.</p>
+      <p><strong>» VECTOREDGEMAX «</strong> — Cybersecurity | Hacking | Development</p>
+      <p><strong>@alex_alderson</strong> · Learn. Build. Defend. Responsibly.</p>
+      <p>© <span id="year">2026</span> VectorEdgeMax. Security research & learning.</p>
     </div>
   </footer>
-  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
