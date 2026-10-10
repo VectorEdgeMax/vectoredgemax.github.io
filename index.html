@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,244 +17,94 @@
       --muted: #9aabc1;
       --border: #203348;
     }
-
     * { box-sizing: border-box; }
-
     html { scroll-behavior: smooth; }
-
     body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: system-ui, -apple-system, Segoe UI, sans-serif;
-      line-height: 1.7;
+      margin: 0; background: var(--bg); color: var(--text);
+      font-family: system-ui, -apple-system, Segoe UI, sans-serif; line-height: 1.7;
     }
-
     a { color: var(--cyan); text-decoration: none; }
     a:hover { text-decoration: underline; }
-
     .container { width: min(1080px, 90%); margin: auto; }
-
     header {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: #070b12ed;
-      border-bottom: 1px solid var(--border);
-      backdrop-filter: blur(12px);
+      position: sticky; top: 0; z-index: 10; background: #070b12ed;
+      border-bottom: 1px solid var(--border); backdrop-filter: blur(12px);
     }
-
     nav {
-      min-height: 72px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
+      min-height: 72px; display: flex; justify-content: space-between;
+      align-items: center; gap: 20px;
     }
-
-    .brand {
-      font-size: 1.2rem;
-      font-weight: 850;
-      letter-spacing: 1px;
-      color: white;
-    }
-
+    .brand { font-size: 1.2rem; font-weight: 850; letter-spacing: 1px; color: white; white-space: nowrap; }
     .brand span { color: var(--cyan); }
-
-    .nav-links {
-      display: flex;
-      gap: 22px;
-      flex-wrap: wrap;
-      font-size: .93rem;
+    .nav-links { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; font-size: .93rem; }
+    .nav-profile-logo {
+      width: 44px; height: 44px; object-fit: cover; border-radius: 50%;
+      border: 2px solid var(--cyan); display: block;
+      box-shadow: 0 0 12px #32e6ff40; transition: transform .2s, box-shadow .2s;
     }
-
+    .profile-logo-link { display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .profile-logo-link:hover .nav-profile-logo { transform: scale(1.08); box-shadow: 0 0 20px #32e6ff80; }
     .hero {
-      padding: 100px 0 85px;
-      text-align: center;
-      background:
-        radial-gradient(ellipse at top, #12334c 0%, transparent 62%);
+      padding: 100px 0 85px; text-align: center;
+      background: radial-gradient(ellipse at top, #12334c 0%, transparent 62%);
     }
-
     .eyebrow {
-      display: inline-block;
-      border: 1px solid #24566b;
-      border-radius: 30px;
-      padding: 5px 14px;
-      color: var(--cyan);
-      font-size: .85rem;
-      letter-spacing: 1px;
+      display: inline-block; border: 1px solid #24566b; border-radius: 30px;
+      padding: 5px 14px; color: var(--cyan); font-size: .85rem; letter-spacing: 1px;
     }
-
-    h1 {
-      margin: 22px 0 12px;
-      font-size: clamp(2.5rem, 7vw, 5rem);
-      line-height: 1.12;
-      letter-spacing: -2px;
-    }
-
-    h1 span {
-      color: var(--cyan);
-      text-shadow: 0 0 32px #32e6ff40;
-    }
-
-    .hero p {
-      max-width: 680px;
-      margin: 18px auto 28px;
-      color: var(--muted);
-      font-size: 1.08rem;
-    }
-
+    h1 { margin: 22px 0 12px; font-size: clamp(2.5rem, 7vw, 5rem); line-height: 1.12; letter-spacing: -2px; }
+    h1 span { color: var(--cyan); text-shadow: 0 0 32px #32e6ff40; }
+    .hero p { max-width: 680px; margin: 18px auto 28px; color: var(--muted); font-size: 1.08rem; }
     .button {
-      display: inline-block;
-      padding: 11px 20px;
-      margin: 5px;
-      border: 1px solid var(--cyan);
-      border-radius: 8px;
-      font-weight: 700;
+      display: inline-block; padding: 11px 20px; margin: 5px;
+      border: 1px solid var(--cyan); border-radius: 8px; font-weight: 700;
     }
-
-    .button.primary {
-      color: #061018;
-      background: var(--cyan);
-    }
-
+    .button.primary { color: #061018; background: var(--cyan); }
     section { padding: 60px 0; }
-
-    .section-title {
-      margin: 0 0 8px;
-      font-size: clamp(1.7rem, 4vw, 2.3rem);
-    }
-
-    .section-intro {
-      color: var(--muted);
-      margin: 0 0 28px;
-    }
-
-    .profile-wrap {
-      display: grid;
-      grid-template-columns: minmax(180px, 280px) 1fr;
-      gap: 28px;
-      align-items: center;
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 28px;
-    }
-
-    .profile-avatar {
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      display: block;
-      object-fit: cover;
-      margin: 0 auto;
-      background: linear-gradient(135deg, var(--cyan), var(--blue));
-      color: #051117;
-      font-size: 3.5rem;
-      font-weight: 900;
-      box-shadow: 0 0 35px rgba(50, 230, 255, 0.25);
-    }
-
-    .profile-meta {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    .profile-meta h3 {
-      margin: 0;
-      font-size: clamp(1.8rem, 4vw, 2.5rem);
-    }
-
-    .tagline {
-      color: var(--cyan);
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      font-size: 0.78rem;
-    }
-
-    .profile-meta p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 1.02rem;
-    }
-
-    .profile-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 4px;
-    }
-
-    .profile-list span {
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      padding: 8px 12px;
-      color: var(--text);
-      background: rgba(255,255,255,0.02);
-      font-size: 0.82rem;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-    }
-
+    .section-title { margin: 0 0 8px; font-size: clamp(1.7rem, 4vw, 2.3rem); }
+    .section-intro { color: var(--muted); margin: 0 0 28px; }
+    .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
     .card {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 24px;
-      transition: border-color .2s, transform .2s;
+      background: var(--panel); border: 1px solid var(--border); border-radius: 14px;
+      padding: 24px; transition: border-color .2s, transform .2s;
     }
-
-    .card:hover {
-      border-color: var(--cyan);
-      transform: translateY(-3px);
-    }
-
+    .card:hover { border-color: var(--cyan); transform: translateY(-3px); }
     .card h3 { margin-top: 0; }
     .card p { color: var(--muted); font-size: .96rem; }
     .symbol { font-size: 1.7rem; }
-
     .notice {
-      border-left: 3px solid var(--cyan);
-      padding: 15px 18px;
-      background: #0b1823;
-      color: var(--muted);
-      border-radius: 0 8px 8px 0;
+      border-left: 3px solid var(--cyan); padding: 15px 18px; background: #0b1823;
+      color: var(--muted); border-radius: 0 8px 8px 0;
     }
-
-    footer {
-      padding: 28px 0;
-      border-top: 1px solid var(--border);
-      color: var(--muted);
-      font-size: .9rem;
-      text-align: center;
-    }
-
+    footer { padding: 28px 0; border-top: 1px solid var(--border); color: var(--muted); font-size: .9rem; text-align: center; }
     @media (max-width: 700px) {
-      nav { padding: 14px 0; align-items: flex-start; flex-direction: column; }
-      .nav-links { gap: 12px 18px; }
+      nav { padding: 12px 0; align-items: center; flex-direction: row; }
+      .brand { font-size: 1rem; }
+      .nav-links { gap: 10px 13px; justify-content: flex-end; font-size: .85rem; }
+      .nav-profile-logo { width: 38px; height: 38px; }
       .hero { padding: 70px 0 55px; }
       .grid { grid-template-columns: 1fr; }
-      .profile-wrap { grid-template-columns: 1fr; }
       section { padding: 42px 0; }
+    }
+    @media (max-width: 430px) {
+      nav { align-items: flex-start; }
+      .nav-links { max-width: 68%; gap: 8px 11px; }
+      .brand { padding-top: 5px; }
     }
   </style>
 </head>
 <body>
   <header>
-    <nav class="container">
+    <nav class="container" aria-label="Main navigation">
       <a class="brand" href="#home">VECTOR<span>EDGEMAX</span></a>
       <div class="nav-links">
         <a href="#home">Home</a>
-        <a href="#profile">Profile</a>
         <a href="#about">About</a>
         <a href="#topics">Topics</a>
         <a href="#projects">Projects</a>
+        <a class="profile-logo-link" href="profile.html" aria-label="Open VectorEdgeMax profile" title="View profile">
+          <img src="Neon Cybersecurity VE Emblem.png" alt="VectorEdgeMax profile logo" class="nav-profile-logo">
+        </a>
       </div>
     </nav>
   </header>
@@ -269,46 +118,15 @@
           Exploring cybersecurity, ethical hacking, Linux, networking
           and Python — one concept and one project at a time.
         </p>
-        <a class="button primary" href="#profile">Meet the Profile</a>
+        <a class="button primary" href="#topics">Explore Topics</a>
         <a class="button" href="#projects">View Projects</a>
-      </div>
-    </section>
-
-    <section id="profile">
-      <div class="container">
-        <h2 class="section-title">Profile</h2>
-        <p class="section-intro">
-          A quick snapshot of who I am and what I focus on.
-        </p>
-        <div class="profile-wrap">
-          <img class="profile-avatar" src="Neon Cybersecurity VE Emblem.png" alt="VectorEdgeMax VE logo" loading="lazy">
-          <div class="profile-meta">
-            <div class="tagline">Cybersecurity Learner · Ethical Hacker · Developer</div>
-            <h3>VectorEdgeMax</h3>
-            <p>
-              I am building a personal space to learn, experiment, and document my work in
-              cybersecurity, Linux, networking, and software development. My goal is to grow
-              responsibly through hands-on practice, clear notes, and useful technical projects.
-            </p>
-            <div class="profile-list">
-              <span>Cybersecurity</span>
-              <span>Ethical Hacking</span>
-              <span>Linux</span>
-              <span>Networking</span>
-              <span>Python</span>
-              <span>Development</span>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
 
     <section id="about">
       <div class="container">
         <h2 class="section-title">About VectorEdgeMax</h2>
-        <p class="section-intro">
-          A personal learning space for technology, security and development.
-        </p>
+        <p class="section-intro">A personal learning space for technology, security and development.</p>
         <div class="notice">
           My mission is to learn openly, build useful projects, and promote
           responsible cybersecurity. All security testing should be performed
@@ -320,27 +138,22 @@
     <section id="topics">
       <div class="container">
         <h2 class="section-title">Explore Topics</h2>
-        <p class="section-intro">
-          The foundations I'm learning and sharing.
-        </p>
+        <p class="section-intro">The foundations I'm learning and sharing.</p>
         <div class="grid">
           <article class="card">
             <div class="symbol">🛡️</div>
             <h3>Cybersecurity</h3>
-            <p>Security fundamentals, defensive practices, threat awareness
-              and responsible vulnerability learning.</p>
+            <p>Security fundamentals, defensive practices, threat awareness and responsible vulnerability learning.</p>
           </article>
           <article class="card">
             <div class="symbol">🐧</div>
             <h3>Linux &amp; Networking</h3>
-            <p>Command-line basics, networking concepts, system administration
-              and troubleshooting notes.</p>
+            <p>Command-line basics, networking concepts, system administration and troubleshooting notes.</p>
           </article>
           <article class="card">
             <div class="symbol">💻</div>
             <h3>Python &amp; Development</h3>
-            <p>Small coding projects, scripts, programming exercises
-              and lessons learned along the way.</p>
+            <p>Small coding projects, scripts, programming exercises and lessons learned along the way.</p>
           </article>
         </div>
       </div>
@@ -349,9 +162,7 @@
     <section id="projects">
       <div class="container">
         <h2 class="section-title">Projects &amp; Write-ups</h2>
-        <p class="section-intro">
-          My portfolio will grow as I publish projects and learning notes.
-        </p>
+        <p class="section-intro">My portfolio will grow as I publish projects and learning notes.</p>
         <div class="grid">
           <article class="card">
             <h3>Learning Notes</h3>
@@ -379,9 +190,6 @@
       <p>© <span id="year">2026</span> VectorEdgeMax. Built for learning.</p>
     </div>
   </footer>
-
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 </body>
 </html>
