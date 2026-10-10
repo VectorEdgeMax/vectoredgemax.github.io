@@ -19,6 +19,7 @@
       --panel: #0d1522;
       --cyan: #32e6ff;
       --neon-green: #0ffe0e;
+      --neon-red: #ff1744;
       --danger-red: #ff3333;
       --blue: #4387ff;
       --text: #eaf4ff;
@@ -47,10 +48,10 @@
       position: sticky;
       top: 0;
       z-index: 10;
-      background: rgba(7, 11, 18, 0.9);
+      background: rgba(7, 11, 18, 0.92);
       border-bottom: 2px solid var(--cyan);
       backdrop-filter: blur(12px);
-      box-shadow: 0 0 20px rgba(50, 230, 255, 0.2);
+      box-shadow: 0 0 20px rgba(50, 230, 255, 0.15);
     }
 
     nav {
@@ -72,7 +73,7 @@
 
     .brand span {
       color: var(--cyan);
-      text-shadow: 0 0 10px rgba(50,230,255,1);
+      text-shadow: 0 0 10px rgba(50, 230, 255, 1);
     }
 
     .nav-links {
@@ -90,8 +91,8 @@
       border-radius: 50%;
       border: 2px solid var(--cyan);
       display: block;
-      box-shadow: 0 0 12px rgba(50,230,255,0.25);
-      transition: transform .2s, box-shadow .2s;
+      box-shadow: 0 0 12px rgba(50, 230, 255, 0.3);
+      transition: transform 0.2s, box-shadow 0.2s;
       cursor: pointer;
     }
 
@@ -104,13 +105,13 @@
 
     .profile-logo-link:hover .nav-profile-logo {
       transform: scale(1.08);
-      box-shadow: 0 0 20px rgba(50,230,255,0.7);
+      box-shadow: 0 0 20px rgba(50, 230, 255, 0.7);
     }
 
     .hero {
       padding: 100px 0 85px;
       text-align: center;
-      background: radial-gradient(ellipse at top, rgba(10, 46, 74, 0.9) 0%, transparent 62%);
+      background: radial-gradient(ellipse at top, rgba(10, 46, 74, 0.8) 0%, transparent 62%);
       border-bottom: 1px solid var(--border-accent);
       position: relative;
       overflow: hidden;
@@ -120,12 +121,15 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at 50% 50%, rgba(50, 230, 255, 0.08), transparent 70%);
+      background: radial-gradient(circle at 50% 50%, rgba(50, 230, 255, 0.06), transparent 70%);
       animation: pulseGlow 4s ease-in-out infinite;
       pointer-events: none;
     }
 
-    @keyframes pulseGlow { 0%,100% { opacity: 0.5; } 50% { opacity: 1; } }
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 0.8; }
+    }
 
     .eyebrow {
       display: inline-block;
@@ -133,17 +137,23 @@
       border-radius: 30px;
       padding: 5px 18px;
       color: var(--neon-green);
-      font-size: .85rem;
+      font-size: 0.85rem;
       letter-spacing: 1px;
       font-weight: 600;
       font-family: 'Courier Prime', monospace;
       animation: glitchBorder 3s infinite;
-      box-shadow: 0 0 8px rgba(15,254,14,0.25);
+      box-shadow: 0 0 8px rgba(15, 254, 14, 0.3);
     }
 
     @keyframes glitchBorder {
-      0%,100% { border-color: var(--neon-green); text-shadow: 0 0 0 transparent; }
-      50% { border-color: var(--cyan); text-shadow: 0 0 10px var(--cyan); }
+      0%, 100% { 
+        border-color: var(--neon-green); 
+        box-shadow: 0 0 8px rgba(15, 254, 14, 0.3);
+      }
+      50% { 
+        border-color: var(--cyan); 
+        box-shadow: 0 0 16px var(--cyan);
+      }
     }
 
     h1 {
@@ -160,48 +170,109 @@
       font-family: 'Orbitron', 'Courier Prime', monospace;
       font-weight: 900;
       font-size: clamp(2.5rem, 7vw, 5rem);
-      letter-spacing: 3px;
+      letter-spacing: 4px;
       line-height: 1.06;
-      background: linear-gradient(90deg, #32e6ff 0%, #9cf7ff 18%, #0ffe0e 36%, #32e6ff 54%, #0ffe0e 72%, #32e6ff 100%);
-      background-size: 200% 200%;
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 0 0 50px rgba(50, 230, 255, 0.35);
-      animation: gradientShift 4s ease infinite, textGlitch 0.35s ease-in-out infinite alternate;
       position: relative;
-      z-index: 1;
+      z-index: 2;
+      color: var(--cyan);
+      text-shadow: 
+        0 0 10px rgba(50, 230, 255, 0.5),
+        0 0 20px rgba(50, 230, 255, 0.3);
+      animation: fireFlow 3s ease-in-out infinite;
     }
 
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    @keyframes textGlitch {
+    @keyframes fireFlow {
       0% {
-        transform: translate(0, 0);
-        text-shadow: -2px 0 rgba(255, 51, 51, 0.8), 2px 2px rgba(15, 254, 14, 0.8), 4px -2px rgba(50, 230, 255, 0.9);
-        clip-path: inset(0 0 0 0);
-      }
-      25% {
-        transform: translate(-2px, 1px);
-        clip-path: inset(10% 0 60% 0);
+        text-shadow: 
+          0 0 10px rgba(50, 230, 255, 0.4),
+          0 0 20px rgba(50, 230, 255, 0.2),
+          0 0 30px rgba(255, 23, 68, 0.1);
+        filter: brightness(1);
       }
       50% {
-        transform: translate(2px, -1px);
-        clip-path: inset(45% 0 18% 0);
-        text-shadow: 2px -2px rgba(255, 51, 51, 0.8), -2px 2px rgba(15, 254, 14, 0.8);
-      }
-      75% {
-        transform: translate(-1px, 2px);
-        clip-path: inset(20% 0 30% 0);
+        text-shadow: 
+          0 0 20px rgba(50, 230, 255, 0.6),
+          0 0 40px rgba(50, 230, 255, 0.4),
+          0 0 60px rgba(255, 23, 68, 0.3),
+          0 0 80px rgba(255, 23, 68, 0.2);
+        filter: brightness(1.15);
       }
       100% {
-        transform: translate(0, 0);
-        clip-path: inset(0 0 0 0);
-        text-shadow: 0 0 35px rgba(50,230,255,0.5);
+        text-shadow: 
+          0 0 10px rgba(50, 230, 255, 0.4),
+          0 0 20px rgba(50, 230, 255, 0.2),
+          0 0 30px rgba(255, 23, 68, 0.1);
+        filter: brightness(1);
+      }
+    }
+
+    .brand-title::before {
+      content: attr(data-text);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      color: var(--neon-red);
+      overflow: hidden;
+      text-shadow: 
+        0 0 10px rgba(255, 23, 68, 0.8),
+        0 0 20px rgba(255, 23, 68, 0.5);
+      opacity: 0.7;
+      animation: flameFlowLeft 2s ease-in-out infinite;
+      clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
+    }
+
+    .brand-title::after {
+      content: attr(data-text);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      color: var(--cyan);
+      overflow: hidden;
+      text-shadow: 
+        0 0 15px rgba(50, 230, 255, 0.6),
+        0 0 30px rgba(50, 230, 255, 0.4);
+      opacity: 0.5;
+      animation: flameFlowRight 2.5s ease-in-out infinite;
+      clip-path: polygon(15% 0, 100% 0, 100% 100%, 0 100%);
+    }
+
+    @keyframes flameFlowLeft {
+      0% {
+        clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
+        transform: translateX(-3px);
+        opacity: 0.5;
+      }
+      50% {
+        clip-path: polygon(0 0, 100% 0, 90% 100%, 0 100%);
+        transform: translateX(1px);
+        opacity: 0.8;
+      }
+      100% {
+        clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
+        transform: translateX(-3px);
+        opacity: 0.5;
+      }
+    }
+
+    @keyframes flameFlowRight {
+      0% {
+        clip-path: polygon(15% 0, 100% 0, 100% 100%, 0 100%);
+        transform: translateX(3px);
+        opacity: 0.4;
+      }
+      50% {
+        clip-path: polygon(10% 0, 100% 0, 100% 100%, 0 100%);
+        transform: translateX(-1px);
+        opacity: 0.7;
+      }
+      100% {
+        clip-path: polygon(15% 0, 100% 0, 100% 100%, 0 100%);
+        transform: translateX(3px);
+        opacity: 0.4;
       }
     }
 
@@ -231,8 +302,14 @@
     }
 
     @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .button {
@@ -271,54 +348,74 @@
     .button.primary {
       color: #061018;
       background: var(--cyan);
-      box-shadow: 0 0 15px rgba(50,230,255,0.25);
+      box-shadow: 0 0 15px rgba(50, 230, 255, 0.25);
     }
 
     .button.primary:hover {
       background: var(--neon-green);
       border-color: var(--neon-green);
-      box-shadow: 0 0 25px rgba(15,254,14,0.35);
+      box-shadow: 0 0 25px rgba(15, 254, 14, 0.35);
     }
 
     .button:hover {
       background: transparent;
       color: var(--neon-green);
       border-color: var(--neon-green);
-      box-shadow: 0 0 20px rgba(15,254,14,0.25);
+      box-shadow: 0 0 20px rgba(15, 254, 14, 0.25);
     }
 
-    section { padding: 60px 0; border-bottom: 1px solid var(--border); }
+    section {
+      padding: 60px 0;
+      border-bottom: 1px solid var(--border);
+    }
 
     .section-title {
       margin: 0 0 8px;
       font-size: clamp(1.7rem, 4vw, 2.3rem);
       color: var(--cyan);
-      text-shadow: 0 0 20px rgba(50,230,255,0.2);
+      text-shadow: 0 0 20px rgba(50, 230, 255, 0.2);
       font-family: 'Orbitron', 'Courier Prime', monospace;
     }
 
-    .section-intro { color: var(--muted); margin: 0 0 28px; }
+    .section-intro {
+      color: var(--muted);
+      margin: 0 0 28px;
+    }
 
-    .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
 
     .card {
       background: var(--panel);
       border: 1px solid var(--border);
       border-radius: 14px;
       padding: 24px;
-      transition: border-color .3s, transform .3s, box-shadow .3s;
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
       cursor: pointer;
     }
 
     .card:hover {
       border-color: var(--neon-green);
       transform: translateY(-3px);
-      box-shadow: 0 0 20px rgba(15,254,14,0.15), inset 0 0 10px rgba(15,254,14,0.06);
+      box-shadow: 0 0 20px rgba(15, 254, 14, 0.15), inset 0 0 10px rgba(15, 254, 14, 0.06);
     }
 
-    .card h3 { margin-top: 0; color: var(--cyan); }
-    .card p { color: var(--muted); font-size: .96rem; }
-    .symbol { font-size: 1.7rem; }
+    .card h3 {
+      margin-top: 0;
+      color: var(--cyan);
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .symbol {
+      font-size: 1.7rem;
+    }
 
     .notice {
       border-left: 4px solid var(--neon-green);
@@ -326,7 +423,7 @@
       background: #0b1823;
       color: var(--text);
       border-radius: 0 8px 8px 0;
-      box-shadow: inset 0 0 10px rgba(15,254,14,0.08);
+      box-shadow: inset 0 0 10px rgba(15, 254, 14, 0.08);
     }
 
     .badge {
@@ -348,14 +445,20 @@
       align-items: start;
     }
 
-    .about-text h3 { color: var(--neon-green); margin-top: 20px; }
+    .about-text h3 {
+      color: var(--neon-green);
+      margin-top: 20px;
+    }
 
     .contact-section {
       text-align: center;
       padding: 40px 0;
     }
 
-    .contact-section h2 { color: var(--cyan); text-shadow: 0 0 20px rgba(50,230,255,0.2); }
+    .contact-section h2 {
+      color: var(--cyan);
+      text-shadow: 0 0 20px rgba(50, 230, 255, 0.2);
+    }
 
     .contact-buttons {
       display: flex;
@@ -382,38 +485,68 @@
     .contact-btn:hover {
       background: var(--neon-green);
       color: #070b12;
-      box-shadow: 0 0 30px rgba(15,254,14,0.45);
+      box-shadow: 0 0 30px rgba(15, 254, 14, 0.45);
     }
 
     footer {
       padding: 28px 0;
       border-top: 2px solid var(--cyan);
       color: var(--muted);
-      font-size: .9rem;
+      font-size: 0.9rem;
       text-align: center;
-      background: linear-gradient(to bottom, transparent, rgba(10,31,46,0.2));
+      background: linear-gradient(to bottom, transparent, rgba(10, 31, 46, 0.2));
     }
 
-    footer p strong { color: var(--neon-green); }
+    footer p strong {
+      color: var(--neon-green);
+    }
 
     @media (max-width: 900px) {
-      .about-content { grid-template-columns: 1fr; }
+      .about-content {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 700px) {
-      nav { padding: 12px 0; align-items: center; flex-direction: row; }
-      .brand { font-size: 1rem; }
-      .nav-links { gap: 10px 13px; justify-content: flex-end; font-size: .85rem; }
-      .nav-profile-logo { width: 38px; height: 38px; }
-      .hero { padding: 70px 0 55px; }
-      .grid { grid-template-columns: 1fr; }
-      section { padding: 42px 0; }
+      nav {
+        padding: 12px 0;
+        align-items: center;
+        flex-direction: row;
+      }
+      .brand {
+        font-size: 1rem;
+      }
+      .nav-links {
+        gap: 10px 13px;
+        justify-content: flex-end;
+        font-size: 0.85rem;
+      }
+      .nav-profile-logo {
+        width: 38px;
+        height: 38px;
+      }
+      .hero {
+        padding: 70px 0 55px;
+      }
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      section {
+        padding: 42px 0;
+      }
     }
 
     @media (max-width: 430px) {
-      nav { align-items: flex-start; }
-      .nav-links { max-width: 68%; gap: 8px 11px; }
-      .brand { padding-top: 5px; }
+      nav {
+        align-items: flex-start;
+      }
+      .nav-links {
+        max-width: 68%;
+        gap: 8px 11px;
+      }
+      .brand {
+        padding-top: 5px;
+      }
     }
   </style>
 </head>
@@ -439,7 +572,7 @@
       <div class="container">
         <span class="eyebrow">LEARN · BUILD · DEFEND</span>
         <h1>Welcome to</h1>
-        <div class="brand-title typewriter">VectorEdgeMax</div>
+        <div class="brand-title typewriter" data-text="VectorEdgeMax">VectorEdgeMax</div>
         <p>
           Exploring cybersecurity, ethical hacking, Linux, networking and Python —
           building tools and knowledge to serve real-world security challenges.
@@ -589,121 +722,131 @@
   </footer>
 
   <script>
+    // Audio Context
     const audioContext = new (window.AudioContext || window.webkitAudioContext)();
 
-    function playMysteriousSound(category) {
+    // Free Fire Button Click Sound (Sharp + Metallic)
+    function playFreeFireClick() {
       const now = audioContext.currentTime;
-      const duration = 0.32;
-      const osc1 = audioContext.createOscillator();
-      const osc2 = audioContext.createOscillator();
+      const duration = 0.12;
+      
+      // Main beep
+      const osc = audioContext.createOscillator();
       const gain = audioContext.createGain();
       const filter = audioContext.createBiquadFilter();
-
-      osc1.type = 'sine';
-      osc2.type = 'triangle';
-      filter.type = 'lowpass';
-
-      const categoryFreqs = {
-        explore: [520, 680],
-        project: [440, 550],
-        networking: [600, 750],
-        payload: [880, 1050],
-        linux: [330, 440],
-        python: [550, 700],
-        web: [770, 920],
-        hacking: [440, 660],
-        tools: [550, 770],
-        notes: [330, 550],
-        code: [660, 880],
-        github: [880, 1100],
-        default: [440, 550]
-      };
-
-      const freqPair = categoryFreqs[category] || categoryFreqs.default;
-      const [freq1, freq2] = freqPair;
-
-      osc1.frequency.setValueAtTime(freq1, now);
-      osc1.frequency.exponentialRampToValueAtTime(freq2, now + duration);
-      osc2.frequency.setValueAtTime(freq2, now);
-      osc2.frequency.exponentialRampToValueAtTime(freq1, now + duration);
-
-      filter.frequency.setValueAtTime(3000, now);
-      filter.frequency.exponentialRampToValueAtTime(1200, now + duration);
-      gain.gain.setValueAtTime(0.24, now);
-      gain.gain.exponentialRampToValueAtTime(0.01, now + duration);
-
-      osc1.connect(filter);
-      osc2.connect(filter);
+      
+      osc.type = 'sine';
+      filter.type = 'highpass';
+      filter.frequency.value = 3500;
+      
+      osc.frequency.setValueAtTime(1200, now);
+      osc.frequency.exponentialRampToValueAtTime(1900, now + duration * 0.6);
+      osc.frequency.exponentialRampToValueAtTime(900, now + duration);
+      
+      gain.gain.setValueAtTime(0.4, now);
+      gain.gain.exponentialRampToValueAtTime(0.05, now + duration);
+      
+      osc.connect(filter);
       filter.connect(gain);
       gain.connect(audioContext.destination);
+      
+      osc.start(now);
+      osc.stop(now + duration);
+      
+      // Sharp metallic pop
+      const osc2 = audioContext.createOscillator();
+      const gain2 = audioContext.createGain();
+      
+      osc2.type = 'square';
+      osc2.frequency.setValueAtTime(2800, now);
+      osc2.frequency.exponentialRampToValueAtTime(400, now + duration * 0.3);
+      
+      gain2.gain.setValueAtTime(0.25, now);
+      gain2.gain.exponentialRampToValueAtTime(0.01, now + duration * 0.3);
+      
+      osc2.connect(gain2);
+      gain2.connect(audioContext.destination);
+      
+      osc2.start(now);
+      osc2.stop(now + duration * 0.3);
+    }
 
+    // Free Fire + Sci-Fi Reverb Sound (Immersive)
+    function playFreeFirSciFi(category) {
+      const now = audioContext.currentTime;
+      const duration = 0.35;
+      
+      // Primary tone
+      const osc1 = audioContext.createOscillator();
+      const osc2 = audioContext.createOscillator();
+      const gain1 = audioContext.createGain();
+      const gain2 = audioContext.createGain();
+      const filter = audioContext.createBiquadFilter();
+      const convolver = audioContext.createConvolver();
+      
+      const categoryFreqs = {
+        explore: [1400, 800],
+        project: [1300, 850],
+        networking: [1500, 900],
+        payload: [1600, 1000],
+        linux: [1200, 750],
+        python: [1350, 820],
+        web: [1450, 880],
+        hacking: [1550, 950],
+        default: [1400, 850]
+      };
+      
+      const [freq1, freq2] = categoryFreqs[category] || categoryFreqs.default;
+      
+      osc1.type = 'sine';
+      osc2.type = 'triangle';
+      filter.type = 'highpass';
+      filter.frequency.value = 2000;
+      filter.Q.value = 2;
+      
+      // Frequency sweep
+      osc1.frequency.setValueAtTime(freq1, now);
+      osc1.frequency.exponentialRampToValueAtTime(freq2, now + duration);
+      
+      osc2.frequency.setValueAtTime(freq2 * 0.85, now);
+      osc2.frequency.exponentialRampToValueAtTime(freq1 * 0.75, now + duration);
+      
+      // Gain envelope
+      gain1.gain.setValueAtTime(0.35, now);
+      gain1.gain.exponentialRampToValueAtTime(0.08, now + duration);
+      
+      gain2.gain.setValueAtTime(0.2, now);
+      gain2.gain.exponentialRampToValueAtTime(0.02, now + duration);
+      
+      osc1.connect(filter);
+      filter.connect(gain1);
+      gain1.connect(audioContext.destination);
+      
+      osc2.connect(gain2);
+      gain2.connect(audioContext.destination);
+      
       osc1.start(now);
       osc2.start(now);
       osc1.stop(now + duration);
       osc2.stop(now + duration);
     }
 
-    function playHackingSound(category) {
-      const now = audioContext.currentTime;
-      const duration = 0.16;
-      const osc = audioContext.createOscillator();
-      const gain = audioContext.createGain();
-      const filter = audioContext.createBiquadFilter();
-
-      osc.type = 'square';
-      filter.type = 'highpass';
-      filter.frequency.value = 2000;
-
-      const categoryFreqs = {
-        explore: 1200,
-        project: 1500,
-        networking: 1800,
-        payload: 2200,
-        linux: 1000,
-        python: 1400,
-        web: 1600,
-        hacking: 2000,
-        tools: 1800,
-        notes: 1200,
-        code: 1500,
-        github: 1900,
-        default: 1500
-      };
-
-      const freq = categoryFreqs[category] || categoryFreqs.default;
-      osc.frequency.setValueAtTime(freq, now);
-      osc.frequency.exponentialRampToValueAtTime(freq * 0.7, now + duration);
-      gain.gain.setValueAtTime(0.18, now);
-      gain.gain.exponentialRampToValueAtTime(0.01, now + duration);
-
-      osc.connect(filter);
-      filter.connect(gain);
-      gain.connect(audioContext.destination);
-
-      osc.start(now);
-      osc.stop(now + duration);
-    }
-
-    document.querySelectorAll('.button, .card, .contact-btn, .profile-logo-link').forEach((el) => {
-      el.addEventListener('click', function () {
-        const category = this.dataset.category || 'default';
-        if (Math.random() > 0.5) {
-          playMysteriousSound(category);
-        } else {
-          playHackingSound(category);
-        }
+    // Button click listeners
+    document.querySelectorAll('.button, .card, .contact-btn').forEach((el) => {
+      el.addEventListener('click', function(e) {
+        playFreeFireClick();
+        
+        setTimeout(() => {
+          const category = this.dataset.category || 'default';
+          playFreeFirSciFi(category);
+        }, 80);
       });
     });
 
-    const brandTitle = document.querySelector('.brand-title');
-    if (brandTitle) {
-      brandTitle.addEventListener('mouseenter', function () {
-        this.style.filter = 'drop-shadow(0 0 24px rgba(50,230,255,0.7))';
-      });
-      brandTitle.addEventListener('mouseleave', function () {
-        this.style.filter = 'none';
-      });
-    }
+    // Profile logo click
+    document.querySelector('.profile-logo-link')?.addEventListener('click', function() {
+      playFreeFireClick();
+    });
 
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
