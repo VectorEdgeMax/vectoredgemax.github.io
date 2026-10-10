@@ -252,29 +252,10 @@
       <a class="brand" href="#home">VECTOR<span>EDGEMAX</span></a>
       <div class="nav-links">
         <a href="#home">Home</a>
+        <a href="#profile">Profile</a>
         <a href="#about">About</a>
         <a href="#topics">Topics</a>
         <a href="#projects">Projects</a>
-      </div>
-      <div class="profile-menu">
-        <button class="profile-toggle" id="profileToggle" type="button"
-                aria-label="Open VectorEdgeMax profile" aria-expanded="false"
-                aria-controls="profilePopover">
-          <img src="Neon%20Cybersecurity%20VE%20Emblem.png" alt="VectorEdgeMax VE logo">
-        </button>
-        <section class="profile-popover" id="profilePopover" aria-label="VectorEdgeMax profile" hidden>
-          <div class="tagline">Cybersecurity Learner · Ethical Hacker · Developer</div>
-          <h2>VectorEdgeMax</h2>
-          <p>I am building a personal space to learn, experiment, and document my work in cybersecurity, Linux, networking, and software development. My goal is to grow responsibly through hands-on practice, clear notes, and useful technical projects.</p>
-          <div class="profile-list">
-            <span>Cybersecurity</span>
-            <span>Ethical Hacking</span>
-            <span>Linux</span>
-            <span>Networking</span>
-            <span>Python</span>
-            <span>Development</span>
-          </div>
-        </section>
       </div>
     </nav>
   </header>
@@ -288,8 +269,37 @@
           Exploring cybersecurity, ethical hacking, Linux, networking
           and Python — one concept and one project at a time.
         </p>
-        <button class="button primary" id="meetProfile" type="button">Meet the Profile</button>
+        <a class="button primary" href="#profile">Meet the Profile</a>
         <a class="button" href="#projects">View Projects</a>
+      </div>
+    </section>
+
+    <section id="profile">
+      <div class="container">
+        <h2 class="section-title">Profile</h2>
+        <p class="section-intro">
+          A quick snapshot of who I am and what I focus on.
+        </p>
+        <div class="profile-wrap">
+          <img class="profile-avatar" src="53Hes.jpg" alt="VectorEdgeMax VE logo" loading="lazy">
+          <div class="profile-meta">
+            <div class="tagline">Cybersecurity Learner · Ethical Hacker · Developer</div>
+            <h3>VectorEdgeMax</h3>
+            <p>
+              I am building a personal space to learn, experiment, and document my work in
+              cybersecurity, Linux, networking, and software development. My goal is to grow
+              responsibly through hands-on practice, clear notes, and useful technical projects.
+            </p>
+            <div class="profile-list">
+              <span>Cybersecurity</span>
+              <span>Ethical Hacking</span>
+              <span>Linux</span>
+              <span>Networking</span>
+              <span>Python</span>
+              <span>Development</span>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -372,35 +382,6 @@
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
-
-    const profileToggle = document.getElementById("profileToggle");
-    const profilePopover = document.getElementById("profilePopover");
-    const meetProfile = document.getElementById("meetProfile");
-
-    function setProfileOpen(open) {
-      profilePopover.hidden = !open;
-      profileToggle.setAttribute("aria-expanded", String(open));
-    }
-
-    profileToggle.addEventListener("click", (event) => {
-      event.stopPropagation();
-      setProfileOpen(profilePopover.hidden);
-    });
-
-    meetProfile.addEventListener("click", () => {
-      setProfileOpen(true);
-      profileToggle.focus();
-    });
-
-    profilePopover.addEventListener("click", (event) => event.stopPropagation());
-
-    document.addEventListener("click", () => setProfileOpen(false));
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") {
-        setProfileOpen(false);
-        profileToggle.focus();
-      }
-    });
   </script>
 </body>
-</html>s
+</html>
