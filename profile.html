@@ -251,20 +251,18 @@
     return audio.play();
   }
 
-  // Back Home button
-  document.querySelector('.back').addEventListener('click', function (e) {
-    e.preventDefault();
+// Back Home button
+document.querySelector('.back').addEventListener('click', function (e) {
+  e.preventDefault();
+  const destination = this.href;
+  const audio = new Audio(navSoundUrl);
+  audio.volume = 0.7;
 
-    const destination = this.href;
-
-    playNavSound()
-      .catch(() => {})
-      .finally(() => {
-        setTimeout(() => {
-          window.location.href = destination;
-        }, 350);
-      });
-  });
+  audio.play().catch(() => {});
+  setTimeout(() => {
+    window.location.href = destination;
+  }, 1000);
+});
 
   // View GitHub button
   document.querySelector('.cta-btn.primary').addEventListener('click', function (e) {
