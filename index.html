@@ -1,0 +1,290 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#070b12">
+  <meta name="description" content="VectorEdgeMax — Cybersecurity, ethical hacking education, Linux, networking and secure coding.">
+  <title>VectorEdgeMax | Cybersecurity &amp; Development</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #070b12;
+      --panel: #0d1522;
+      --cyan: #32e6ff;
+      --blue: #4387ff;
+      --text: #eaf4ff;
+      --muted: #9aabc1;
+      --border: #203348;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, Segoe UI, sans-serif;
+      line-height: 1.7;
+    }
+
+    a { color: var(--cyan); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container { width: min(1080px, 90%); margin: auto; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: #070b12ed;
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+    }
+
+    nav {
+      min-height: 72px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .brand {
+      font-size: 1.2rem;
+      font-weight: 850;
+      letter-spacing: 1px;
+      color: white;
+    }
+
+    .brand span { color: var(--cyan); }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+      font-size: .93rem;
+    }
+
+    .hero {
+      padding: 100px 0 85px;
+      text-align: center;
+      background:
+        radial-gradient(ellipse at top, #12334c 0%, transparent 62%);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      border: 1px solid #24566b;
+      border-radius: 30px;
+      padding: 5px 14px;
+      color: var(--cyan);
+      font-size: .85rem;
+      letter-spacing: 1px;
+    }
+
+    h1 {
+      margin: 22px 0 12px;
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      line-height: 1.12;
+      letter-spacing: -2px;
+    }
+
+    h1 span {
+      color: var(--cyan);
+      text-shadow: 0 0 32px #32e6ff40;
+    }
+
+    .hero p {
+      max-width: 680px;
+      margin: 18px auto 28px;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 11px 20px;
+      margin: 5px;
+      border: 1px solid var(--cyan);
+      border-radius: 8px;
+      font-weight: 700;
+    }
+
+    .button.primary {
+      color: #061018;
+      background: var(--cyan);
+    }
+
+    section { padding: 60px 0; }
+
+    .section-title {
+      margin: 0 0 8px;
+      font-size: clamp(1.7rem, 4vw, 2.3rem);
+    }
+
+    .section-intro {
+      color: var(--muted);
+      margin: 0 0 28px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+      transition: border-color .2s, transform .2s;
+    }
+
+    .card:hover {
+      border-color: var(--cyan);
+      transform: translateY(-3px);
+    }
+
+    .card h3 { margin-top: 0; }
+    .card p { color: var(--muted); font-size: .96rem; }
+    .symbol { font-size: 1.7rem; }
+
+    .notice {
+      border-left: 3px solid var(--cyan);
+      padding: 15px 18px;
+      background: #0b1823;
+      color: var(--muted);
+      border-radius: 0 8px 8px 0;
+    }
+
+    footer {
+      padding: 28px 0;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: .9rem;
+      text-align: center;
+    }
+
+    @media (max-width: 700px) {
+      nav { padding: 14px 0; align-items: flex-start; flex-direction: column; }
+      .nav-links { gap: 12px 18px; }
+      .hero { padding: 70px 0 55px; }
+      .grid { grid-template-columns: 1fr; }
+      section { padding: 42px 0; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="container">
+      <a class="brand" href="#home">VECTOR<span>EDGEMAX</span></a>
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#topics">Topics</a>
+        <a href="#projects">Projects</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container">
+        <span class="eyebrow">LEARN · BUILD · DEFEND</span>
+        <h1>Welcome to <span>VectorEdgeMax</span></h1>
+        <p>
+          Exploring cybersecurity, ethical hacking, Linux, networking
+          and Python — one concept and one project at a time.
+        </p>
+        <a class="button primary" href="#topics">Explore Topics</a>
+        <a class="button" href="#projects">View Projects</a>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title">About VectorEdgeMax</h2>
+        <p class="section-intro">
+          A personal learning space for technology, security and development.
+        </p>
+        <div class="notice">
+          My mission is to learn openly, build useful projects, and promote
+          responsible cybersecurity. All security testing should be performed
+          only on systems I own or have explicit permission to test.
+        </div>
+      </div>
+    </section>
+
+    <section id="topics">
+      <div class="container">
+        <h2 class="section-title">Explore Topics</h2>
+        <p class="section-intro">
+          The foundations I'm learning and sharing.
+        </p>
+        <div class="grid">
+          <article class="card">
+            <div class="symbol">🛡️</div>
+            <h3>Cybersecurity</h3>
+            <p>Security fundamentals, defensive practices, threat awareness
+              and responsible vulnerability learning.</p>
+          </article>
+          <article class="card">
+            <div class="symbol">🐧</div>
+            <h3>Linux &amp; Networking</h3>
+            <p>Command-line basics, networking concepts, system administration
+              and troubleshooting notes.</p>
+          </article>
+          <article class="card">
+            <div class="symbol">💻</div>
+            <h3>Python &amp; Development</h3>
+            <p>Small coding projects, scripts, programming exercises
+              and lessons learned along the way.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <h2 class="section-title">Projects &amp; Write-ups</h2>
+        <p class="section-intro">
+          My portfolio will grow as I publish projects and learning notes.
+        </p>
+        <div class="grid">
+          <article class="card">
+            <h3>Learning Notes</h3>
+            <p>Organized notes from my cybersecurity and networking studies.</p>
+            <span class="eyebrow">COMING SOON</span>
+          </article>
+          <article class="card">
+            <h3>Python Projects</h3>
+            <p>Beginner-friendly tools and scripts with explanations.</p>
+            <span class="eyebrow">COMING SOON</span>
+          </article>
+          <article class="card">
+            <h3>CTF Write-ups</h3>
+            <p>Documenting authorized lab challenges and lessons learned.</p>
+            <span class="eyebrow">COMING SOON</span>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p><strong>VECTOR EDGEMAX</strong> · Learn ethically. Build responsibly.</p>
+      <p>© <span id="year">2026</span> VectorEdgeMax. Built for learning.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
