@@ -52,7 +52,6 @@
       color: var(--neon-green); font-weight: 600;
       transition: all 0.3s;
       font-family: 'Courier New', monospace;
-      cursor: pointer;
     }
     .back:hover {
       background: var(--neon-green); color: #070b12;
@@ -129,7 +128,6 @@
       border-radius: 8px; color: var(--cyan); font-weight: 700;
       transition: all 0.3s;
       font-family: 'Courier New', monospace;
-      cursor: pointer;
     }
     .cta-btn.primary {
       background: var(--cyan); color: #070b12;
@@ -240,44 +238,6 @@
   </footer>
 
   <script>
-    // Sound URLs
-    const navSoundUrl = 'https://raw.githubusercontent.com/VectorEdgeMax/vectoredgemax.github.io/main/47313572-sci-fi-sfx-8-350836.mp3';
-    
-    // Create audio object
-    const navAudio = new Audio(navSoundUrl);
-
-    function playNavSound() {
-      navAudio.currentTime = 0;
-      navAudio.play().catch(() => {
-        console.log('Nav sound playback failed (possibly blocked by browser)');
-      });
-    }
-
-    // Back Home Button - Nav Sound
-    document.querySelector('.back').addEventListener('click', (e) => {
-      e.preventDefault();
-      playNavSound();
-      setTimeout(() => {
-        window.location.href = 'index.html';
-      }, 100);
-    });
-
-    // View GitHub Button - Nav Sound
-    document.querySelector('.cta-btn.primary').addEventListener('click', (e) => {
-      playNavSound();
-    });
-
-    // Home Button - Nav Sound
-    document.querySelectorAll('.cta-btn:not(.primary)').forEach((btn) => {
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        playNavSound();
-        setTimeout(() => {
-          window.location.href = 'index.html';
-        }, 100);
-      });
-    });
-
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
