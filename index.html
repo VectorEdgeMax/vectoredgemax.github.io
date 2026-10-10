@@ -452,37 +452,37 @@
         <h2 class="section-title">Current Learning Focus</h2>
         <p class="section-intro">Areas I'm actively exploring and building expertise in.</p>
         <div class="grid">
-          <article class="card left-card">
+          <article class="card">
             <div class="symbol">🌐</div>
             <h3>Networking</h3>
             <p>TCP/IP understanding, routing, DNS, packet analysis and network defense fundamentals.</p>
             <span class="badge">In progress</span>
           </article>
-          <article class="card left-card">
+          <article class="card">
             <div class="symbol">🔥</div>
             <h3>Payloads & Exploits</h3>
             <p>Payload crafting, exploitation basics, and ethical research in controlled environments.</p>
             <span class="badge">In progress</span>
           </article>
-          <article class="card left-card">
+          <article class="card">
             <div class="symbol">🐧</div>
             <h3>Linux & Systems</h3>
             <p>Command-line mastery, system administration, hardening and Linux internals.</p>
             <span class="badge">In progress</span>
           </article>
-          <article class="card left-card">
+          <article class="card">
             <div class="symbol">🐍</div>
             <h3>Python</h3>
             <p>Automation, scripting, tools and security-focused development workflows.</p>
             <span class="badge">In progress</span>
           </article>
-          <article class="card left-card">
+          <article class="card">
             <div class="symbol">🛡️</div>
             <h3>Web Security</h3>
             <p>OWASP, secure coding, vulnerability logic and defensive application design.</p>
             <span class="badge">In progress</span>
           </article>
-          <article class="card left-card">
+          <article class="card">
             <div class="symbol">⚔️</div>
             <h3>Ethical Hacking</h3>
             <p>CTF learning, red team fundamentals and responsible security studies.</p>
@@ -497,19 +497,19 @@
         <h2 class="section-title">Projects & Resources</h2>
         <p class="section-intro">Building useful tools, notes and practical code for security and development.</p>
         <div class="grid">
-          <article class="card left-card">
+          <article class="card">
             <div class="symbol">🛠️</div>
             <h3>Security Tools</h3>
             <p>Small tools for automation, payload generation and practical security workflows.</p>
             <span class="badge">Building</span>
           </article>
-          <article class="card left-card">
+          <article class="card">
             <div class="symbol">📚</div>
             <h3>Learning Notes</h3>
             <p>Documentation on Linux, networking, security concepts and practical experiments.</p>
             <span class="badge">Building</span>
           </article>
-          <article class="card left-card">
+          <article class="card">
             <div class="symbol">💻</div>
             <h3>Useful Code</h3>
             <p>Reusable code snippets, scripts and utilities for productive development.</p>
@@ -540,58 +540,51 @@
   </footer>
 
   <script>
-    // Sound Effects URLs
-    const sounds = {
-      profileLogo: 'https://raw.githubusercontent.com/VectorEdgeMax/vectoredgemax.github.io/main/vadim_makes_sound-futuristic-hologram-menu-close-ui-614160.mp3',
-      cardClick: 'https://raw.githubusercontent.com/VectorEdgeMax/vectoredgemax.github.io/main/malarbrush-camera-flash-204151.mp3',
-      navLinks: 'https://raw.githubusercontent.com/VectorEdgeMax/vectoredgemax.github.io/main/47313572-sci-fi-sfx-8-350836.mp3'
-    };
-
+    // Sound URLs
+    const navSoundUrl = 'https://raw.githubusercontent.com/VectorEdgeMax/vectoredgemax.github.io/main/47313572-sci-fi-sfx-8-350836.mp3';
+    const cardSoundUrl = 'https://raw.githubusercontent.com/VectorEdgeMax/vectoredgemax.github.io/main/malarbrush-camera-flash-204151.mp3';
+    
     // Create audio objects
-    const audioElements = {};
-    for (const [key, url] of Object.entries(sounds)) {
-      audioElements[key] = new Audio(url);
+    const navAudio = new Audio(navSoundUrl);
+    const cardAudio = new Audio(cardSoundUrl);
+
+    function playNavSound() {
+      navAudio.currentTime = 0;
+      navAudio.play().catch(() => {
+        console.log('Nav sound playback failed (possibly blocked by browser)');
+      });
     }
 
-    function playSound(soundKey) {
-      try {
-        const audio = audioElements[soundKey];
-        audio.currentTime = 0;
-        audio.play().catch(() => {
-          console.log(`${soundKey} playback failed (possibly blocked by browser)`);
-        });
-      } catch (error) {
-        console.error(`Error playing ${soundKey}:`, error);
-      }
+    function playCardSound() {
+      cardAudio.currentTime = 0;
+      cardAudio.play().catch(() => {
+        console.log('Card sound playback failed (possibly blocked by browser)');
+      });
     }
 
-    // Profile Logo Click - Futuristic Hologram Menu Close UI Sound
+    // Navigation Links - Nav Sound (Home, About, Focus, Projects, Contact)
+    document.querySelectorAll('.nav-link').forEach((link) => {
+      link.addEventListener('click', playNavSound);
+    });
+
+    // Profile Logo - Nav Sound
     document.querySelector('.nav-profile-logo').addEventListener('click', (e) => {
       e.preventDefault();
-      playSound('profileLogo');
+      playNavSound();
       setTimeout(() => {
         window.location.href = 'profile.html';
       }, 100);
     });
 
-    // Left Card Clicks - Camera Flash Sound
-    document.querySelectorAll('.left-card').forEach((card) => {
-      card.addEventListener('click', () => {
-        playSound('cardClick');
-      });
+    // Cards - Card Sound
+    document.querySelectorAll('.card').forEach((card) => {
+      card.addEventListener('click', playCardSound);
     });
 
-    // Navigation Links - Sci-Fi SFX Sound
-    document.querySelectorAll('.nav-link').forEach((link) => {
-      link.addEventListener('click', (e) => {
-        playSound('navLinks');
-      });
-    });
-
-    // Hero Buttons - Navigation Sounds
+    // Hero Buttons (Explore Topics, View Projects) - Card Sound
     document.querySelectorAll('.button').forEach((btn) => {
       btn.addEventListener('click', (e) => {
-        playSound('navLinks');
+        playCardSound();
         if (btn.textContent.includes('Explore Topics')) {
           document.getElementById('focus').scrollIntoView({ behavior: 'smooth' });
         } else if (btn.textContent.includes('View Projects')) {
@@ -600,9 +593,9 @@
       });
     });
 
-    // Contact Button
+    // Contact Button (Visit GitHub) - Nav Sound
     document.querySelector('.contact-btn').addEventListener('click', () => {
-      playSound('navLinks');
+      playNavSound();
       window.open('https://github.com/VectorEdgeMax', '_blank');
     });
 
