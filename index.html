@@ -416,7 +416,7 @@
         <a href="#focus" class="nav-link">Focus</a>
         <a href="#projects" class="nav-link">Projects</a>
         <a href="#contact" class="nav-link">Contact</a>
-        <a href="profile.html"><img src="Neon Cybersecurity VE Emblem.png" alt="VectorEdgeMax profile logo" class="nav-profile-logo"></a>
+        <a href="profile.html" class="profile-link"><img src="Neon Cybersecurity VE Emblem.png" alt="VectorEdgeMax profile logo" class="nav-profile-logo"></a>
       </div>
     </nav>
   </header>
@@ -561,22 +561,22 @@
       });
     }
 
+    // Nav links (Home, About, Focus, Projects, Contact)
     document.querySelectorAll('.nav-link').forEach((link) => {
       link.addEventListener('click', playNavSound);
     });
 
-    document.querySelector('.nav-profile-logo').addEventListener('click', (e) => {
-      e.preventDefault();
+    // Profile logo link
+    document.querySelector('.profile-link').addEventListener('click', (e) => {
       playNavSound();
-      setTimeout(() => {
-        window.location.href = 'profile.html';
-      }, 100);
     });
 
+    // Cards
     document.querySelectorAll('.card').forEach((card) => {
       card.addEventListener('click', playCardSound);
     });
 
+    // Hero buttons (Explore Topics, View Projects)
     document.querySelectorAll('.button').forEach((btn) => {
       btn.addEventListener('click', () => {
         playNavSound();
@@ -588,6 +588,7 @@
       });
     });
 
+    // Contact button (Visit GitHub)
     document.querySelector('.contact-btn').addEventListener('click', () => {
       playNavSound();
       window.open('https://github.com/VectorEdgeMax', '_blank');
