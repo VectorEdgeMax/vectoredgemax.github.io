@@ -39,8 +39,8 @@
     }
 
     a:hover {
-      color: var(--green);
-      text-shadow: 0 0 12px rgba(14,251,138,0.7);
+      color: var(--cyan);
+      text-decoration: underline;
     }
 
     .container {
@@ -92,6 +92,12 @@
       object-fit: cover;
       box-shadow: 0 0 18px rgba(54,229,255,0.5);
       cursor: pointer;
+      transition: 0.25s ease;
+    }
+
+    .nav-profile-logo:hover {
+      box-shadow: 0 0 26px rgba(14, 251, 138, 0.8);
+      border-color: var(--green);
     }
 
     .hero {
@@ -132,14 +138,32 @@
       display: inline-block;
       padding: 8px 18px;
       border-radius: 999px;
-      border: 1px solid rgba(14,251,138,0.9);
-      color: var(--green);
+      border: 2px solid var(--cyan);
+      color: var(--cyan);
       letter-spacing: 2px;
       font-weight: 700;
       text-transform: uppercase;
-      box-shadow: 0 0 18px rgba(14,251,138,0.2);
+      box-shadow: 
+        0 0 12px rgba(54,229,255,0.4),
+        inset 0 0 12px rgba(54,229,255,0.1);
       margin-bottom: 26px;
-      background: rgba(14,251,138,0.04);
+      background: rgba(54,229,255,0.04);
+      animation: eyebrowPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes eyebrowPulse {
+      0%, 100% {
+        box-shadow: 
+          0 0 12px rgba(54,229,255,0.4),
+          inset 0 0 12px rgba(54,229,255,0.1);
+        border-color: var(--cyan);
+      }
+      50% {
+        box-shadow: 
+          0 0 24px rgba(54,229,255,0.8),
+          inset 0 0 20px rgba(54,229,255,0.25);
+        border-color: rgba(54,229,255,0.9);
+      }
     }
 
     .brand-title {
@@ -218,31 +242,46 @@
       display: inline-block;
       padding: 12px 22px;
       margin: 5px;
-      border: 1px solid var(--cyan);
+      border: 2px solid var(--cyan);
       border-radius: 10px;
-      background: rgba(54,229,255,0.04);
+      background: rgba(54,229,255,0.06);
       color: var(--cyan);
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 1px;
       transition: 0.25s ease;
-      box-shadow: 0 0 14px rgba(54,229,255,0.08);
+      box-shadow: 
+        0 0 14px rgba(54,229,255,0.3),
+        inset 0 0 14px rgba(54,229,255,0.05);
       cursor: pointer;
+      animation: buttonPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes buttonPulse {
+      0%, 100% {
+        box-shadow: 
+          0 0 14px rgba(54,229,255,0.3),
+          inset 0 0 14px rgba(54,229,255,0.05);
+      }
+      50% {
+        box-shadow: 
+          0 0 24px rgba(54,229,255,0.6),
+          inset 0 0 20px rgba(54,229,255,0.15);
+      }
     }
 
     .button.primary {
-      background: rgba(54,229,255,0.14);
-      border-color: var(--cyan);
-      color: var(--cyan);
-      box-shadow: 0 0 18px rgba(54,229,255,0.18);
+      background: rgba(54,229,255,0.12);
     }
 
     .button:hover {
-      transform: translateY(-1px);
-      background: rgba(255,59,77,0.08);
-      border-color: var(--red);
-      color: #ffdfe2;
-      box-shadow: 0 0 18px rgba(255,59,77,0.18);
+      transform: translateY(-2px);
+      color: var(--green);
+      border-color: var(--green);
+      background: rgba(14, 251, 138, 0.08);
+      box-shadow: 
+        0 0 26px rgba(14, 251, 138, 0.5),
+        inset 0 0 20px rgba(14, 251, 138, 0.1);
     }
 
     section {
@@ -256,6 +295,7 @@
       color: var(--cyan);
       font-family: "Orbitron", sans-serif;
       letter-spacing: 1px;
+      text-shadow: 0 0 12px rgba(54,229,255,0.3);
     }
 
     .section-intro {
@@ -274,14 +314,19 @@
       border: 1px solid var(--border);
       border-radius: 14px;
       padding: 24px;
-      transition: 0.25s ease;
+      transition: 0.3s ease;
       cursor: pointer;
+      min-height: 320px;
+      display: flex;
+      flex-direction: column;
     }
 
     .card:hover {
-      border-color: rgba(255,59,77,0.8);
-      transform: translateY(-4px);
-      box-shadow: 0 0 20px rgba(255,59,77,0.12);
+      border-color: var(--green);
+      transform: translateY(-6px);
+      box-shadow: 
+        0 0 26px rgba(14, 251, 138, 0.25),
+        inset 0 0 14px rgba(14, 251, 138, 0.05);
     }
 
     .card h3 {
@@ -292,6 +337,7 @@
     .card p {
       color: var(--muted);
       margin-bottom: 14px;
+      flex-grow: 1;
     }
 
     .badge {
@@ -326,19 +372,23 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      border: 1px solid var(--cyan);
+      border: 2px solid var(--cyan);
       padding: 12px 22px;
       border-radius: 10px;
       background: rgba(54,229,255,0.06);
       color: var(--cyan);
       font-weight: 700;
       cursor: pointer;
+      transition: 0.25s ease;
+      box-shadow: 0 0 14px rgba(54,229,255,0.3);
+      animation: buttonPulse 2s ease-in-out infinite;
     }
 
     .contact-btn:hover {
-      background: rgba(255,59,77,0.08);
-      border-color: var(--red);
-      color: #ffd5da;
+      color: var(--green);
+      border-color: var(--green);
+      background: rgba(14, 251, 138, 0.08);
+      box-shadow: 0 0 26px rgba(14, 251, 138, 0.5);
     }
 
     footer {
@@ -352,6 +402,7 @@
       .grid { grid-template-columns: 1fr; }
       .nav-links { gap: 10px 12px; }
       .hero { min-height: 78vh; }
+      .card { min-height: 280px; }
     }
   </style>
 </head>
@@ -380,8 +431,8 @@
           Exploring cybersecurity, ethical hacking, Linux, networking and Python —
           building tools and knowledge to serve real-world security challenges.
         </p>
-        <a class="button primary" href="#focus">Explore Topics</a>
-        <a class="button" href="#projects">View Projects</a>
+        <button class="button primary">Explore Topics</button>
+        <button class="button">View Projects</button>
       </div>
     </section>
 
@@ -475,7 +526,7 @@
           Open to learning, collaboration, feedback and discussions around security, development and ethical research.
         </p>
         <div class="contact-buttons">
-          <a class="contact-btn" href="https://github.com/VectorEdgeMax" target="_blank" rel="noopener noreferrer">Visit GitHub</a>
+          <button class="contact-btn">Visit GitHub</button>
         </div>
       </div>
     </section>
@@ -489,78 +540,36 @@
   </footer>
 
   <script>
-    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    // MP3 click sound from GitHub
+    const clickSoundUrl = 'https://raw.githubusercontent.com/VectorEdgeMax/vectoredgemax.github.io/main/47313572-sci-fi-sfx-8-350836.mp3';
+    const audio = new Audio(clickSoundUrl);
 
-    function playMetalClick() {
-      const now = audioCtx.currentTime;
-      
-      // Metal impact - sharp and metallic
-      const osc1 = audioCtx.createOscillator();
-      const gain1 = audioCtx.createGain();
-      const filter1 = audioCtx.createBiquadFilter();
-      
-      osc1.type = "square";
-      filter1.type = "highpass";
-      filter1.frequency.value = 4200;
-      filter1.Q.value = 8;
-      
-      osc1.frequency.setValueAtTime(3800, now);
-      osc1.frequency.linearRampToValueAtTime(2400, now + 0.04);
-      
-      gain1.gain.setValueAtTime(0.35, now);
-      gain1.gain.linearRampToValueAtTime(0.01, now + 0.05);
-      
-      osc1.connect(filter1);
-      filter1.connect(gain1);
-      gain1.connect(audioCtx.destination);
-      
-      osc1.start(now);
-      osc1.stop(now + 0.05);
-      
-      // Deep metallic resonance
-      const osc2 = audioCtx.createOscillator();
-      const gain2 = audioCtx.createGain();
-      
-      osc2.type = "sine";
-      osc2.frequency.setValueAtTime(1600, now);
-      osc2.frequency.exponentialRampToValueAtTime(900, now + 0.08);
-      
-      gain2.gain.setValueAtTime(0.22, now);
-      gain2.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
-      
-      osc2.connect(gain2);
-      gain2.connect(audioCtx.destination);
-      
-      osc2.start(now);
-      osc2.stop(now + 0.08);
-      
-      // Sharp attack - metallic ping
-      const osc3 = audioCtx.createOscillator();
-      const gain3 = audioCtx.createGain();
-      const filter3 = audioCtx.createBiquadFilter();
-      
-      osc3.type = "triangle";
-      filter3.type = "highpass";
-      filter3.frequency.value = 5800;
-      
-      osc3.frequency.setValueAtTime(5200, now);
-      osc3.frequency.linearRampToValueAtTime(2800, now + 0.03);
-      
-      gain3.gain.setValueAtTime(0.18, now);
-      gain3.gain.linearRampToValueAtTime(0.001, now + 0.03);
-      
-      osc3.connect(filter3);
-      filter3.connect(gain3);
-      gain3.connect(audioCtx.destination);
-      
-      osc3.start(now);
-      osc3.stop(now + 0.03);
+    function playClickSound() {
+      audio.currentTime = 0;
+      audio.play().catch(() => {
+        console.log('Audio playback failed (possibly blocked by browser)');
+      });
     }
 
-    document.querySelectorAll('a, .card, .button').forEach((el) => {
-      el.addEventListener('click', () => {
-        playMetalClick();
+    // Add click sound to ALL buttons only
+    document.querySelectorAll('button').forEach((btn) => {
+      btn.addEventListener('click', playClickSound);
+    });
+
+    // Handle "Explore Topics" and "View Projects" button actions
+    document.querySelectorAll('.button').forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        if (btn.textContent.includes('Explore Topics')) {
+          document.getElementById('focus').scrollIntoView({ behavior: 'smooth' });
+        } else if (btn.textContent.includes('View Projects')) {
+          document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
+        }
       });
+    });
+
+    // Handle "Visit GitHub" button
+    document.querySelector('.contact-btn').addEventListener('click', () => {
+      window.open('https://github.com/VectorEdgeMax', '_blank');
     });
 
     document.getElementById('year').textContent = new Date().getFullYear();
