@@ -566,9 +566,32 @@
       link.addEventListener('click', playNavSound);
     });
 
-    // Profile logo link
-    document.querySelector('.profile-link').addEventListener('click', (e) => {
-      playNavSound();
+    // Profile logo link: play sound before opening the profile page
+    document.querySelector('.profile-link').addEventListener('click', function (e) {
+      e.preventDefault();
+
+      const destination = this.href;
+      const audio = new Audio(navSoundUrl);
+      audio.volume = 0.7;
+
+      audio.addEventListener('ended', () => {
+        window.location.href = destination;
+      }, { once: true });
+
+      audio.addEventListener('error', () => {
+        window.location.href = destination;
+      }, { once: true });
+
+      audio.play().catch(() => {
+        window.location.href = destination;
+      });
+
+      // Fallback in case the audio does not fire its ended event.
+      setTimeout(() => {
+        if (window.location.href !== destination) {
+          window.location.href = destination;
+        }
+      }, 1200);
     });
 
     // Cards
