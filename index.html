@@ -543,8 +543,7 @@
     // Sound URLs
     const navSoundUrl = 'https://raw.githubusercontent.com/VectorEdgeMax/vectoredgemax.github.io/main/47313572-sci-fi-sfx-8-350836.mp3';
     const cardSoundUrl = 'https://raw.githubusercontent.com/VectorEdgeMax/vectoredgemax.github.io/main/malarbrush-camera-flash-204151.mp3';
-    
-    // Create audio objects
+
     const navAudio = new Audio(navSoundUrl);
     const cardAudio = new Audio(cardSoundUrl);
 
@@ -562,12 +561,10 @@
       });
     }
 
-    // Navigation Links - Nav Sound (Home, About, Focus, Projects, Contact)
     document.querySelectorAll('.nav-link').forEach((link) => {
       link.addEventListener('click', playNavSound);
     });
 
-    // Profile Logo - Nav Sound
     document.querySelector('.nav-profile-logo').addEventListener('click', (e) => {
       e.preventDefault();
       playNavSound();
@@ -576,14 +573,12 @@
       }, 100);
     });
 
-    // Cards - Card Sound
     document.querySelectorAll('.card').forEach((card) => {
       card.addEventListener('click', playCardSound);
     });
 
-    // Hero Buttons (Explore Topics, View Projects) - Nav Sound (same as nav buttons)
     document.querySelectorAll('.button').forEach((btn) => {
-      btn.addEventListener('click', (e) => {
+      btn.addEventListener('click', () => {
         playNavSound();
         if (btn.textContent.includes('Explore Topics')) {
           document.getElementById('focus').scrollIntoView({ behavior: 'smooth' });
@@ -593,13 +588,11 @@
       });
     });
 
-    // Contact Button (Visit GitHub) - Nav Sound
     document.querySelector('.contact-btn').addEventListener('click', () => {
       playNavSound();
       window.open('https://github.com/VectorEdgeMax', '_blank');
     });
 
-    // Set current year
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
