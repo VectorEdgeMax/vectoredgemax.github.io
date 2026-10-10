@@ -239,46 +239,70 @@
     </div>
   </footer>
 
-  <script>
-    // Sound URLs
-    const navSoundUrl = 'https://raw.githubusercontent.com/VectorEdgeMax/vectoredgemax.github.io/main/47313572-sci-fi-sfx-8-350836.mp3';
-    
-    // Create audio object
-    const navAudio = new Audio(navSoundUrl);
+  
+<script>
+  const navSoundUrl =
+    'https://raw.githubusercontent.com/VectorEdgeMax/vectoredgemax.github.io/main/47313572-sci-fi-sfx-8-350836.mp3';
 
-    function playNavSound() {
-      navAudio.currentTime = 0;
-      navAudio.play().catch(() => {
-        console.log('Nav sound playback failed (possibly blocked by browser)');
-      });
-    }
+  function playNavSound() {
+    const audio = new Audio(navSoundUrl);
+    audio.volume = 0.7;
 
-    // Back Home Button - Nav Sound
-    document.querySelector('.back').addEventListener('click', (e) => {
-      e.preventDefault();
-      playNavSound();
-      setTimeout(() => {
-        window.location.href = 'index.html';
-      }, 100);
-    });
+    return audio.play();
+  }
 
-    // View GitHub Button - Nav Sound
-    document.querySelector('.cta-btn.primary').addEventListener('click', (e) => {
-      playNavSound();
-    });
+  // Back Home button
+  document.querySelector('.back').addEventListener('click', function (e) {
+    e.preventDefault();
 
-    // Home Button - Nav Sound
-    document.querySelectorAll('.cta-btn:not(.primary)').forEach((btn) => {
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        playNavSound();
+    const destination = this.href;
+
+    playNavSound()
+      .catch(() => {})
+      .finally(() => {
         setTimeout(() => {
-          window.location.href = 'index.html';
-        }, 100);
+          window.location.href = destination;
+        }, 350);
       });
-    });
+  });
 
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+  // View GitHub button
+  document.querySelector('.cta-btn.primary').addEventListener('click', function (e) {
+    e.preventDefault();
+
+    const destination = this.href;
+
+    playNavSound()
+      .catch(() => {})
+      .finally(() => {
+        setTimeout(() => {
+          window.open(destination, '_blank', 'noopener,noreferrer');
+        }, 350);
+      });
+  });
+
+  // Home button inside the profile card
+  document.querySelectorAll('.cta-btn:not(.primary)').forEach((btn) => {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+
+      const destination = this.href;
+
+      playNavSound()
+        .catch(() => {})
+        .finally(() => {
+          setTimeout(() => {
+            window.location.href = destination;
+          }, 350);
+        });
+    });
+  });
+
+  document.getElementById('year').textContent =
+    new Date().getFullYear();
+</script>
+</body>
+</html>
+
 </body>
 </html>
