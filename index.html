@@ -546,25 +546,40 @@
   </footer>
 
   <script>
-    // Sound URLs
-    const navSoundUrl = 'https://raw.githubusercontent.com/VectorEdgeMax/vectoredgemax.github.io/main/47313572-sci-fi-sfx-8-350836.mp3';
-    const cardSoundUrl = 'https://raw.githubusercontent.com/VectorEdgeMax/vectoredgemax.github.io/main/malarbrush-camera-flash-204151.mp3';
+    // Reliable UI sounds generated locally with Web Audio (no external MP3 dependency).
+    let soundContext;
 
-    const navAudio = new Audio(navSoundUrl);
-    const cardAudio = new Audio(cardSoundUrl);
+    function playTone({ frequency = 700, endFrequency = 420, duration = 0.12, type = 'sine', volume = 0.08 } = {}) {
+      try {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (!AudioContextClass) return;
+        soundContext = soundContext || new AudioContextClass();
+        if (soundContext.state === 'suspended') soundContext.resume();
+
+        const oscillator = soundContext.createOscillator();
+        const gain = soundContext.createGain();
+        const now = soundContext.currentTime;
+        oscillator.type = type;
+        oscillator.frequency.setValueAtTime(frequency, now);
+        oscillator.frequency.exponentialRampToValueAtTime(Math.max(30, endFrequency), now + duration);
+        gain.gain.setValueAtTime(0.0001, now);
+        gain.gain.exponentialRampToValueAtTime(volume, now + 0.012);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
+        oscillator.connect(gain);
+        gain.connect(soundContext.destination);
+        oscillator.start(now);
+        oscillator.stop(now + duration + 0.02);
+      } catch (error) {
+        console.warn('UI sound could not play:', error);
+      }
+    }
 
     function playNavSound() {
-      navAudio.currentTime = 0;
-      navAudio.play().catch(() => {
-        console.log('Nav sound playback failed (possibly blocked by browser)');
-      });
+      playTone({ frequency: 560, endFrequency: 880, duration: 0.09, type: 'sine', volume: 0.07 });
     }
 
     function playCardSound() {
-      cardAudio.currentTime = 0;
-      cardAudio.play().catch(() => {
-        console.log('Card sound playback failed (possibly blocked by browser)');
-      });
+      playTone({ frequency: 980, endFrequency: 320, duration: 0.16, type: 'triangle', volume: 0.1 });
     }
 
     // Nav links (Home, About, Focus, Projects, Contact)
@@ -600,30 +615,17 @@
       }, 1200);
     });
 
-    // Cards: start the sound during the user click, then navigate after it plays.
-    // Immediate anchor navigation can unload the page and cut off the sound.
+    // Cards: play a short local sound and then navigate.
     document.querySelectorAll('.card').forEach((card) => {
       card.addEventListener('click', function (event) {
-        // Keep normal browser behavior for open-in-new-tab / modified clicks.
-        if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey || event.button !== 0) return;
-
+        if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey || event.button !== 0) {
+          playCardSound();
+          return;
+        }
         event.preventDefault();
         const destination = this.href;
-        const audio = new Audio(cardSoundUrl);
-        audio.volume = 0.8;
-        let navigated = false;
-        const goToDestination = () => {
-          if (navigated) return;
-          navigated = true;
-          window.location.href = destination;
-        };
-
-        audio.addEventListener('ended', goToDestination, { once: true });
-        audio.addEventListener('error', goToDestination, { once: true });
-        audio.play().catch(goToDestination);
-
-        // Safety fallback if the browser never fires ended/error.
-        setTimeout(goToDestination, 1400);
+        playCardSound();
+        window.setTimeout(() => { window.location.href = destination; }, 180);
       });
     });
 
