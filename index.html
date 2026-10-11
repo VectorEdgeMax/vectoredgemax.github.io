@@ -600,9 +600,31 @@
       }, 1200);
     });
 
-    // Cards
+    // Cards: start the sound during the user click, then navigate after it plays.
+    // Immediate anchor navigation can unload the page and cut off the sound.
     document.querySelectorAll('.card').forEach((card) => {
-      card.addEventListener('click', playCardSound);
+      card.addEventListener('click', function (event) {
+        // Keep normal browser behavior for open-in-new-tab / modified clicks.
+        if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey || event.button !== 0) return;
+
+        event.preventDefault();
+        const destination = this.href;
+        const audio = new Audio(cardSoundUrl);
+        audio.volume = 0.8;
+        let navigated = false;
+        const goToDestination = () => {
+          if (navigated) return;
+          navigated = true;
+          window.location.href = destination;
+        };
+
+        audio.addEventListener('ended', goToDestination, { once: true });
+        audio.addEventListener('error', goToDestination, { once: true });
+        audio.play().catch(goToDestination);
+
+        // Safety fallback if the browser never fires ended/error.
+        setTimeout(goToDestination, 1400);
+      });
     });
 
     // Hero buttons (Explore Topics, View Projects)
