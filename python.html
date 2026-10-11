@@ -17,6 +17,13 @@ button,.button,.btn,input[type=submit]{border-color:#ff303b}
 @media(max-width:700px){body{background-attachment:scroll;background-position:center top}.card,.guide-card,.tool-card,.content-card{border-radius:10px 2px 10px 10px!important}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 
+
+/* Transparent panels: keep the cyberpunk borders and readable text, remove panel fills. */
+.card,.guide-card,.learning-card,.path-card,.quick-links,.quick-links-panel,.stats-panel,.system-stats,.terminal-panel,.terminal-window,.dashboard-panel,.content-panel,.panel,.section-card,.info-card,.focus-card,.project-card,.profile-card,.command-panel,.command-help,.terminal-output,.terminal-input-wrap{
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
 </style></head><body><header><div class="wrap"><a class="brand" href="index.html">VECTOR<span>EDGEMAX</span></a><a class="back" href="index.html">← Home</a></div></header><main class="wrap"><p class="level">VECTOR EDGEMAX / LEARNING PATH</p><h1>Python: Beginner to Advanced Roadmap</h1><p>A level-by-level Python course with runnable examples, core concepts, projects, testing, automation and safe security scripting.</p><div class="notice">Study in order, practise in a lab you own or have explicit permission to test, take notes, and revisit each level. Examples are educational; never run security tests against systems without authorization.</div>
 <h2>Level 1 — First steps</h2><p>Python is a readable, general-purpose language used for automation, web apps, data work, testing and security tooling. Install Python 3 from the official source and verify with <code>python --version</code> or <code>python3 --version</code>.</p><pre>print("Hello, world!")
 name = input("Your name: ")
