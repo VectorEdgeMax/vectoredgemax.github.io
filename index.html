@@ -405,37 +405,7 @@
       .card { min-height: 280px; }
     }
   </style>
-
-    /* Shared cyberpunk page transition */
-    @keyframes vemPageEnter {
-      from { opacity: 0; transform: translateY(14px) scale(.99); filter: blur(5px); }
-      to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
-    }
-    @keyframes vemOverlayEnter {
-      0% { opacity: 0; clip-path: inset(0 0 100% 0); }
-      35% { opacity: 1; clip-path: inset(0 0 0 0); }
-      100% { opacity: 1; clip-path: inset(0 0 0 0); }
-    }
-    @keyframes vemOverlayExit {
-      0% { opacity: 0; clip-path: inset(100% 0 0 0); }
-      35% { opacity: 1; clip-path: inset(0 0 0 0); }
-      100% { opacity: 1; clip-path: inset(0 0 0 0); }
-    }
-    body { animation: vemPageEnter .55s cubic-bezier(.2,.75,.25,1) both; }
-    .vem-page-transition {
-      position: fixed; inset: 0; z-index: 99999; pointer-events: none;
-      opacity: 0; background:
-        radial-gradient(circle at 50% 50%, rgba(54,229,255,.2), transparent 45%),
-        linear-gradient(135deg, #050b12 0%, #071b29 55%, #10222d 100%);
-      border-bottom: 2px solid #36e5ff;
-    }
-    .vem-page-transition.is-active { animation: vemOverlayExit .38s ease-in both; }
-    @media (prefers-reduced-motion: reduce) {
-      body { animation: none; }
-      .vem-page-transition.is-active { animation-duration: .01ms; }
-    }
-
-  </head>
+</head>
 <body>
   <header>
     <nav class="container" aria-label="Main navigation">
@@ -576,52 +546,64 @@
   </footer>
 
   <script>
-    // Reliable UI sounds generated locally with Web Audio (no external MP3 dependency).
-    let soundContext;
+    // Sound URLs
+    const navSoundUrl = 'https://raw.githubusercontent.com/VectorEdgeMax/vectoredgemax.github.io/main/47313572-sci-fi-sfx-8-350836.mp3';
+    const cardSoundUrl = 'https://raw.githubusercontent.com/VectorEdgeMax/vectoredgemax.github.io/main/malarbrush-camera-flash-204151.mp3';
 
-    function playTone({ frequency = 700, endFrequency = 420, duration = 0.12, type = 'sine', volume = 0.08 } = {}) {
-      try {
-        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-        if (!AudioContextClass) return;
-        soundContext = soundContext || new AudioContextClass();
-        if (soundContext.state === 'suspended') soundContext.resume();
-
-        const oscillator = soundContext.createOscillator();
-        const gain = soundContext.createGain();
-        const now = soundContext.currentTime;
-        oscillator.type = type;
-        oscillator.frequency.setValueAtTime(frequency, now);
-        oscillator.frequency.exponentialRampToValueAtTime(Math.max(30, endFrequency), now + duration);
-        gain.gain.setValueAtTime(0.0001, now);
-        gain.gain.exponentialRampToValueAtTime(volume, now + 0.012);
-        gain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
-        oscillator.connect(gain);
-        gain.connect(soundContext.destination);
-        oscillator.start(now);
-        oscillator.stop(now + duration + 0.02);
-      } catch (error) {
-        console.warn('UI sound could not play:', error);
-      }
-    }
+    const navAudio = new Audio(navSoundUrl);
+    const cardAudio = new Audio(cardSoundUrl);
 
     function playNavSound() {
-      playTone({ frequency: 560, endFrequency: 880, duration: 0.09, type: 'sine', volume: 0.07 });
+      navAudio.currentTime = 0;
+      navAudio.play().catch(() => {
+        console.log('Nav sound playback failed (possibly blocked by browser)');
+      });
     }
 
     function playCardSound() {
-      playTone({ frequency: 980, endFrequency: 320, duration: 0.16, type: 'triangle', volume: 0.1 });
+      cardAudio.currentTime = 0;
+      cardAudio.play().catch(() => {
+        console.log('Card sound playback failed (possibly blocked by browser)');
+      });
     }
-    window.playCardSound = playCardSound;
-    window.playNavSound = playNavSound;
 
     // Nav links (Home, About, Focus, Projects, Contact)
     document.querySelectorAll('.nav-link').forEach((link) => {
       link.addEventListener('click', playNavSound);
     });
 
-    // Profile logo navigation is handled by the shared animated transition.
+    // Profile logo link: play sound before opening the profile page
+    document.querySelector('.profile-link').addEventListener('click', function (e) {
+      e.preventDefault();
 
-    // Card navigation and sound are handled by the shared animated page transition.
+      const destination = this.href;
+      const audio = new Audio(navSoundUrl);
+      audio.volume = 0.7;
+
+      audio.addEventListener('ended', () => {
+        window.location.href = destination;
+      }, { once: true });
+
+      audio.addEventListener('error', () => {
+        window.location.href = destination;
+      }, { once: true });
+
+      audio.play().catch(() => {
+        window.location.href = destination;
+      });
+
+      // Fallback in case the audio does not fire its ended event.
+      setTimeout(() => {
+        if (window.location.href !== destination) {
+          window.location.href = destination;
+        }
+      }, 1200);
+    });
+
+    // Cards
+    document.querySelectorAll('.card').forEach((card) => {
+      card.addEventListener('click', playCardSound);
+    });
 
     // Hero buttons (Explore Topics, View Projects)
     document.querySelectorAll('.button').forEach((btn) => {
@@ -643,35 +625,5 @@
 
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
-
-<script>
-
-  (() => {
-    const overlay = document.createElement('div');
-    overlay.className = 'vem-page-transition';
-    overlay.setAttribute('aria-hidden', 'true');
-    document.body.appendChild(overlay);
-    let navigating = false;
-    document.querySelectorAll('a[href]').forEach((link) => {
-      link.addEventListener('click', (event) => {
-        const href = link.getAttribute('href');
-        if (!href || href.startsWith('#') || link.target === '_blank' || event.defaultPrevented ||
-            event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
-        let destination;
-        try { destination = new URL(link.href, window.location.href); } catch (_) { return; }
-        if (destination.origin !== window.location.origin ||
-            (destination.pathname === window.location.pathname && destination.hash)) return;
-        event.preventDefault();
-        if (navigating) return;
-        navigating = true;
-        if (link.classList.contains('card') && typeof window.playCardSound === 'function') window.playCardSound();
-        else if (typeof window.playNavSound === 'function') window.playNavSound();
-        overlay.classList.add('is-active');
-        window.setTimeout(() => { window.location.href = destination.href; }, 360);
-      });
-    });
-  })();
-
-</script>
 </body>
 </html>
