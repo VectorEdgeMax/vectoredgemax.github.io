@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#070b12">
+<meta name="description" content="VectorEdgeMax advanced cybersecurity learning dashboard and safe Linux terminal simulator.">
+<title>New Dashboard | VectorEdgeMax</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Share+Tech+Mono&display=swap');
+:root{--bg:#050b12;--panel:#0c1724;--line:#1b3547;--cyan:#36e5ff;--green:#0efb8a;--muted:#91aabd;--white:#eaf7ff}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 75% 0%,#0a2636 0,transparent 40%),var(--bg);color:var(--white);font:15px/1.65 'Share Tech Mono',monospace}a{color:var(--cyan);text-decoration:none}.wrap{width:min(1180px,94%);margin:auto}header{border-bottom:1px solid #36e5ff55;background:#050b12eF;position:sticky;top:0;z-index:3;backdrop-filter:blur(12px)}nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}.brand{font:700 1rem Orbitron,sans-serif;color:#fff;letter-spacing:1.5px}.brand span{color:var(--cyan)}.switches{display:flex;gap:8px;align-items:center}.switch{border:1px solid var(--cyan);border-radius:7px;padding:7px 10px;font-size:.8rem;background:#09202c;color:var(--cyan)}.switch.active{background:var(--cyan);color:#001018}.hero{padding:42px 0 25px}.eyebrow{color:var(--green);letter-spacing:2px;font-size:.78rem}.hero h1{font:700 clamp(2rem,5vw,3.4rem)/1.15 Orbitron,sans-serif;color:var(--cyan);margin:10px 0}.hero p{color:var(--muted);max-width:720px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:22px 0}.stat,.panel,.tile{background:linear-gradient(145deg,#0d1c2b,#07111b);border:1px solid var(--line);border-radius:12px;padding:17px}.stat strong{display:block;color:var(--green);font:600 1.5rem Orbitron,sans-serif}.stat span,.muted{color:var(--muted);font-size:.85rem}.layout{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(280px,.75fr);gap:16px}.section-title{font:600 1rem Orbitron,sans-serif;color:var(--cyan);margin:0 0 14px}.terminal{background:#02070b;border:1px solid #214454;border-radius:9px;overflow:hidden}.termbar{padding:10px 13px;border-bottom:1px solid #214454;color:var(--muted);font-size:.8rem}.termout{height:235px;overflow:auto;padding:14px;color:var(--green);white-space:pre-wrap;overflow-wrap:anywhere}.promptrow{display:flex;gap:8px;padding:10px;border-top:1px solid #214454}.promptrow span{color:var(--green);padding-top:7px}.promptrow input{min-width:0;flex:1;background:#07111a;border:1px solid #244454;border-radius:5px;padding:9px;color:#fff;font:inherit;outline:none}.promptrow button,.tile a{border:1px solid var(--cyan);border-radius:6px;background:#09202c;color:var(--cyan);padding:8px 12px;font:inherit;cursor:pointer}.hint{margin-top:10px;color:var(--muted);font-size:.8rem}.tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.tile{display:block;transition:.2s}.tile:hover{border-color:var(--green);transform:translateY(-2px)}.tile .emoji{font-size:1.5rem}.tile h3{font:600 .92rem Orbitron,sans-serif;color:var(--cyan);margin:8px 0}.tile p{font-size:.82rem;color:var(--muted);margin:0}footer{text-align:center;color:var(--muted);padding:30px 0}@media(max-width:760px){.layout{grid-template-columns:1fr}.stats{grid-template-columns:1fr}.hero{padding-top:28px}.tiles{grid-template-columns:1fr 1fr}}@media(max-width:420px){.tiles{grid-template-columns:1fr}.switch{font-size:.72rem;padding:6px 7px}}
+</style></head>
+<body><header><nav class="wrap"><a class="brand" href="index.html">VECTOR<span>EDGEMAX</span></a><div class="switches"><a class="switch active" href="dashboard.html">New Dashboard</a><a class="switch" href="backups/old-dashboard.html">Old Dashboard</a><a class="switch" href="profile.html" aria-label="Profile">Profile ↗</a></div></nav></header>
+<main class="wrap"><section class="hero"><div class="eyebrow">LEARN · BUILD · DEFEND</div><h1>Advanced Learning Dashboard</h1><p>Your cybersecurity learning hub. Explore guides, practise safe Linux commands in the browser, and jump into your next topic.</p><div class="stats"><div class="stat"><strong>06</strong><span>Core learning paths</span></div><div class="stat"><strong>SAFE</strong><span>Local command simulator</span></div><div class="stat"><strong>01</strong><span>Mission: keep learning</span></div></div></section>
+<div class="layout"><section class="panel"><h2 class="section-title">▸ Interactive Linux Terminal</h2><div class="terminal"><div class="termbar">guest@vectoredgemax:~ — browser simulator</div><div class="termout" id="output" role="log" aria-live="polite">VectorEdgeMax practice terminal v1.0
+This is a safe simulator, not a real system.
+Type 'help' to see supported commands.
+
+guest@vectoredgemax:~$ </div><form class="promptrow" id="termform"><span>guest@vem:~$</span><input id="command" autocomplete="off" spellcheck="false" aria-label="Terminal command" placeholder="Type help and press Enter"><button type="submit">Run</button></form></div><p class="hint">Try: help · ls · pwd · whoami · date · clear · echo hello</p></section>
+<section class="panel"><h2 class="section-title">▸ Learning Paths</h2><div class="tiles">
+<a class="tile" href="linux-systems.html"><div class="emoji">🐧</div><h3>Linux & Systems</h3><p>Commands, users and hardening.</p></a>
+<a class="tile" href="networking.html"><div class="emoji">🌐</div><h3>Networking</h3><p>TCP/IP, DNS and routing.</p></a>
+<a class="tile" href="python.html"><div class="emoji">🐍</div><h3>Python</h3><p>Learn through runnable examples.</p></a>
+<a class="tile" href="web-security.html"><div class="emoji">🛡️</div><h3>Web Security</h3><p>Secure design and OWASP basics.</p></a>
+<a class="tile" href="ethical-hacking.html"><div class="emoji">⚔️</div><h3>Ethical Hacking</h3><p>Authorized labs and methodology.</p></a>
+<a class="tile" href="security-tools.html"><div class="emoji">🛠️</div><h3>Security Tools</h3><p>Tool guides and safe workflows.</p></a>
+</div></section></div></main><footer>VectorEdgeMax · Learn ethically. Build responsibly.</footer>
+<script>
+(function(){
+const form=document.getElementById('termform'),input=document.getElementById('command'),out=document.getElementById('output');
+const files=['linux-systems.html','networking.html','python.html','web-security.html','ethical-hacking.html','security-tools.html'];
+function write(s){out.textContent+=s+'\n';out.scrollTop=out.scrollHeight}
+form.addEventListener('submit',function(e){e.preventDefault();const raw=input.value.trim();if(!raw)return;write('guest@vectoredgemax:~$ '+raw);input.value='';const parts=raw.split(/\s+/),cmd=parts[0],arg=parts.slice(1).join(' ');
+switch(cmd){
+case 'help':write('Supported commands:\n  help       Show this list\n  ls         List practice topics\n  pwd        Show simulated directory\n  whoami     Show simulated user\n  date       Show current browser date\n  echo TEXT  Print text\n  clear      Clear terminal\n  uname      Show simulated system');break;
+case 'ls':write('learning-guides/  '+files.join('  '));break;
+case 'pwd':write('/home/guest');break;
+case 'whoami':write('guest (simulated user)');break;
+case 'date':write(new Date().toString());break;
+case 'echo':write(arg);break;
+case 'uname':write('VectorEdgeMax-Lab 1.0 (simulated browser environment)');break;
+case 'clear':out.textContent='';break;
+default:write('Command not found: '+cmd+'\nThis practice terminal only supports safe demo commands. Type help.');
+}
+});
+})();
+</script></body></html>
