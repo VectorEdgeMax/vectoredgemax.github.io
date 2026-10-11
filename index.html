@@ -407,6 +407,58 @@
       .hero { min-height: 78vh; }
       .card { min-height: 280px; }
     }
+
+    /* Red Team dashboard redesign */
+    :root { --bg:#030304; --panel:#100709; --cyan:#ff353f; --green:#00ff9d; --muted:#c2a6aa; --border:#63151d; }
+    body { background:#030304; background-image:radial-gradient(ellipse at 50% 0%,rgba(255,0,15,.20),transparent 48%),repeating-linear-gradient(135deg,transparent 0 72px,rgba(255,0,0,.025) 73px 75px); }
+    header { background:rgba(4,2,3,.94); border-bottom:1px solid #ff263855; }
+    .brand { font-family:Orbitron,sans-serif; font-size:clamp(1.1rem,2.4vw,2rem); font-weight:900; text-shadow:0 0 8px #ff1616,0 0 24px #ff161677; }
+    .brand span { color:#ff353f; text-shadow:0 0 12px #ff1010; }
+    .dashboard-mini { border-color:#ff303b;color:#ff777e; }
+    .dashboard-new { background:#30080c; }
+    .nav-profile-logo { border-color:#ff353f;box-shadow:0 0 18px #ff152f77; }
+    .hero { min-height:52vh; background:radial-gradient(ellipse at 50% 20%,rgba(255,0,15,.25),transparent 50%),linear-gradient(90deg,#050304d9,#10020477,#050304d9),repeating-linear-gradient(135deg,#070304 0 36px,#150306 37px 39px); border-bottom:1px solid #ff253b66; }
+    .hero::before { background:linear-gradient(120deg,transparent,rgba(255,0,0,.15),transparent); }
+    .eyebrow { border-color:#ff303b;color:#ff5962;box-shadow:0 0 14px #ff000044; }
+    .brand-title { color:#fff;text-shadow:0 0 12px #ff1c1c,0 0 28px #ff171788; }
+    .brand-title::before { color:#ff1717;text-shadow:0 0 15px #ff0000; }
+    .brand-title::after { color:#ffb2b2;text-shadow:0 0 12px #ff0000; }
+    .hero p { color:#d9bfc3; }
+    .button,.contact-btn { border-color:#ff303b;color:#ff686f;background:#220508;box-shadow:0 0 14px #ff000033;animation:none; }
+    .button:hover,.contact-btn:hover { border-color:#00ff9d;color:#00ff9d;background:#001b11;box-shadow:0 0 22px #00ff9d44; }
+    section { border-bottom-color:#ff253b22; }
+    .section-title { color:#ff4c55;text-shadow:0 0 14px #ff1b2533; }
+    .grid { grid-template-columns:repeat(5,minmax(0,1fr));gap:12px; }
+    .card { min-height:235px;padding:17px;background:linear-gradient(145deg,#100609,#030304);border-color:#7a1c27;border-radius:12px;box-shadow:inset 0 0 16px #ff00100a; }
+    .card:hover { border-color:#ff303b;box-shadow:0 0 20px #ff001033;transform:translateY(-4px); }
+    .card h3 { color:#fff;font-family:Orbitron,sans-serif;font-size:.95rem; }
+    .card p { color:#c4aeb1;font-size:.9rem; }
+    .badge { background:#210609;border-color:#ff3948;color:#ff737b; }
+    .notice { background:#150508;border-left-color:#ff303b;color:#d0b7bb; }
+    .terminal-dashboard { width:min(1120px,92%);margin:24px auto 0;display:grid;grid-template-columns:minmax(0,1fr) 245px;gap:16px;align-items:stretch; }
+    .terminal-panel,.side-panel { border:1px solid #ff303b;border-radius:14px;background:linear-gradient(145deg,#100609,#030304);box-shadow:0 0 22px #ff00101a;overflow:hidden; }
+    .terminal-head { padding:12px 16px;border-bottom:1px solid #ff303b88;font:700 1rem Orbitron,sans-serif;color:#fff;text-shadow:0 0 9px #ff303b; }
+    .terminal-body { display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:14px;padding:14px; }
+    .terminal-output { min-height:245px;max-height:300px;overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere;color:#c9e8f5;font-size:.88rem;background:#020405;padding:8px;border-radius:5px; }
+    .terminal-output .green { color:#00ff9d; }
+    .command-help { border:1px dashed #187d8c;padding:12px;color:#b8dfe8;font-size:.8rem;background:#030b0e; }
+    .command-help strong { display:block;color:#36e5ff;margin-bottom:8px; }
+    .command-help span { color:#00ff9d;display:inline-block;min-width:56px; }
+    .terminal-form { display:flex;gap:8px;padding:10px;border-top:1px solid #ff303b88; }
+    .terminal-form input { flex:1;min-width:0;background:#050607;color:#fff;border:1px solid #67212a;border-radius:5px;padding:10px;font:inherit; }
+    .terminal-form button { background:#25060a;color:#ff737b;border:1px solid #ff303b;border-radius:5px;padding:8px 14px;font:inherit;cursor:pointer; }
+    .side-stack { display:grid;gap:14px; }
+    .side-panel h3 { margin:0;padding:12px;border-bottom:1px solid #ff303b66;color:#fff;font:600 .9rem Orbitron,sans-serif; }
+    .side-panel a,.side-panel .statline { display:block;padding:8px 12px;color:#d5c3c6;font-size:.82rem; }
+    .side-panel a:hover { color:#ff666e;background:#250609;text-decoration:none; }
+    .side-panel small { display:block;color:#9e858a; }
+    .statline { display:flex!important;justify-content:space-between;gap:8px; }
+    .statline b { color:#ff626a;font-weight:400; }
+    footer { border-top:1px solid #ff303b55;color:#ff737b; }
+    @media(max-width:950px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.terminal-dashboard{grid-template-columns:1fr}.side-stack{grid-template-columns:repeat(2,minmax(0,1fr))}.terminal-body{grid-template-columns:1fr}.command-help{display:none}}
+    @media(max-width:600px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.card{min-height:240px;padding:13px}.nav-links{gap:8px}.hero{min-height:65vh}.side-stack{grid-template-columns:1fr}.terminal-output{min-height:200px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;scroll-behavior:auto!important;transition:none!important}}
+
   </style>
 </head>
 <body>
@@ -440,6 +492,30 @@
         <button class="button">View Projects</button>
       </div>
     </section>
+
+    <div class="terminal-dashboard" aria-label="VectorEdge terminal and dashboard quick links">
+      <section class="terminal-panel" style="padding:0;border-bottom:0;">
+        <div class="terminal-head">▣ VECTOREDGE TERMINAL <span style="float:right;color:#ff303b">— □ ×</span></div>
+        <div class="terminal-body">
+          <div>
+            <div class="terminal-output" id="vem-terminal-output" role="log" aria-live="polite"></div>
+            <form class="terminal-form" id="vem-terminal-form"><span style="color:#ff454f;padding-top:8px">&gt;_</span><input id="vem-terminal-input" aria-label="Terminal prompt" autocomplete="off" placeholder="Ask about a learning topic or type help"><button type="submit">Run</button></form>
+          </div>
+          <div class="command-help"><strong>Available Commands:</strong><div><span>help</span> Show commands</div><div><span>ls</span> List learning guides</div><div><span>pwd</span> Current directory</div><div><span>whoami</span> Current user</div><div><span>date</span> Date and time</div><div><span>echo</span> Print text</div><div><span>clear</span> Clear terminal</div><p>Type a command and press Enter...</p></div>
+        </div>
+      </section>
+      <div class="side-stack">
+        <aside class="side-panel"><h3>⚡ Quick Links</h3>
+          <a href="linux-systems.html">♟ Linux Basics<small>Commands · File System</small></a>
+          <a href="python.html">🐍 Python Programming<small>Scripts · Automation</small></a>
+          <a href="networking.html">◎ Networking<small>TCP/IP · Tools</small></a>
+          <a href="web-security.html">⬡ Web Security<small>OWASP · Vulnerabilities</small></a>
+          <a href="ethical-hacking.html">◉ Ethical Hacking<small>Recon · Exploitation</small></a>
+          <a href="security-tools.html">⬢ Cybersecurity<small>Defend · Monitor · Analyze</small></a>
+        </aside>
+        <aside class="side-panel"><h3>◉ System Stats</h3><div class="statline">Learning Progress <b>35%</b></div><div style="height:7px;background:#321017;margin:0 12px 8px;border-radius:9px;overflow:hidden"><div style="height:100%;width:35%;background:#00ff9d"></div></div><div class="statline">Total Guides <b>10</b></div><div class="statline">Completed <b>4</b></div><div class="statline">In Progress <b>6</b></div></aside>
+      </div>
+    </div>
 
     <section id="about">
       <div class="container">
@@ -551,6 +627,29 @@
   </footer>
 
   <script>
+
+    // Safe, local learning-terminal simulator; no system commands are executed.
+    (function(){
+      const output=document.getElementById('vem-terminal-output'),form=document.getElementById('vem-terminal-form'),input=document.getElementById('vem-terminal-input');
+      const guides=[['networking','networking.html','Networking','TCP/IP, subnetting, DNS, routing, packet analysis and defensive monitoring.'],['payload','payloads-exploits.html','Payloads & Exploits','Exploit concepts, defensive analysis and safe lab requirements.'],['exploit','payloads-exploits.html','Payloads & Exploits','Exploit concepts, defensive analysis and safe lab requirements.'],['linux','linux-systems.html','Linux & Systems','Linux commands, file permissions, users, services, scripting and hardening.'],['python','python.html','Python','Variables, conditions, loops, functions, files, testing and safe automation.'],['web security','web-security.html','Web Security','HTTP, authentication, OWASP risks, secure coding and remediation.'],['owasp','web-security.html','Web Security','HTTP, authentication, OWASP risks, secure coding and remediation.'],['ethical hacking','ethical-hacking.html','Ethical Hacking','Permission, scope, lab setup, assessment methodology and reporting.'],['security tools','security-tools.html','Security Tools','Security tool purposes and safe workflows in authorized labs.'],['blog','blog.html','Learning Notes','Guides and articles about cybersecurity and development.'],['command','commands-list.html','Commands List','A quick reference for common system and developer commands.'],['useful code','useful-code.html','Useful Code','Practical code examples and safe automation snippets.']];
+      function line(t,cls){const d=document.createElement('div');if(cls)d.className=cls;d.textContent=t;output.appendChild(d);output.scrollTop=output.scrollHeight}
+      const intro=['[+] Initializing VectorEdge Terminal...','[+] Loading system modules...','[+] Done.','','➜ Welcome to the Terminal','Tell me what do you want ?','> '];let i=0;
+      function type(){if(i>=intro.length){input.focus();return}line(intro[i++],i===5?'green':'');setTimeout(type,i<4?260:430)}type();
+      function respond(q){const s=q.toLowerCase();if(s==='help'||s==='?')return 'Commands: help, ls, pwd, whoami, date, echo TEXT, clear, open TOPIC. Ask about Linux, Python, networking, web security, ethical hacking or security tools.';
+      if(s==='ls')return 'networking.html  payloads-exploits.html  linux-systems.html  python.html  web-security.html  ethical-hacking.html  security-tools.html  blog.html  commands-list.html  useful-code.html';
+      if(s==='pwd')return '/home/guest/vectoredgemax-lab (simulated)';
+      if(s==='whoami')return 'guest (simulated learning user)';
+      if(s==='date')return new Date().toString();
+      if(s==='clear'){output.textContent='';return ''}
+      if(s.startsWith('echo '))return q.slice(5);
+      if(s.startsWith('open ')){const term=s.slice(5).trim();const g=guides.find(x=>x[0]===term||x[1].replace('.html','')===term||x[2].toLowerCase()===term);if(g){location.href=g[1];return ''}return 'Guide not found. Type ls or help.'}
+      const g=guides.find(x=>s.includes(x[0]));if(g)return g[2]+'\n'+g[3]+'\nOpen guide: '+g[1];
+      if(/hello|hi|welcome|what can you do/.test(s))return 'Welcome to VectorEdgeMax. Ask about Linux, Python, networking, web security, ethical hacking, payload concepts or security tools. Type help for commands.';
+      return 'This terminal is a built-in learning assistant, not a live AI service. Ask about Linux, Python, networking, web security, ethical hacking or type help.';
+      }
+      form.addEventListener('submit',e=>{e.preventDefault();const q=input.value.trim();if(!q)return;line('> '+q);input.value='';const a=respond(q);if(a)line(a)});
+    })();
+
     // Sound URLs
     const navSoundUrl = 'https://raw.githubusercontent.com/VectorEdgeMax/vectoredgemax.github.io/main/47313572-sci-fi-sfx-8-350836.mp3';
 
