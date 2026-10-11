@@ -26,6 +26,26 @@ button,.button,.btn,input[type=submit]{border-color:#ff303b}
 
 /* Transparent panels */
 .card,.guide-card,.learning-card,.path-card,.quick-links,.quick-links-panel,.stats-panel,.system-stats,.terminal-panel,.terminal-window,.dashboard-panel,.content-panel,.panel,.section-card,.info-card,.focus-card,.project-card,.profile-card,.command-panel,.command-help,.terminal-output,.terminal-input-wrap{background-color:transparent!important;background-image:none!important}
+
+/* HARD OVERRIDE: remove all fills behind cards, lesson content, and text blocks */
+.stat,.panel,.tile,.terminal,.termbar,.termout,.promptrow,.promptrow input,
+.card,.guide-card,.tool-card,.content-card,article,.terminal-panel,.side-panel,
+.notice,.callout,.profile-card,.stat-card,.profile-info,.profile-tags,
+pre,code,blockquote,details,summary,table,thead,tbody,tr,td,th,
+.lesson,.lesson-card,.level,.topic,.example,.code-example,.output,.note,.tip,.warning,
+section .panel,main .panel,main article,main section,
+[class*="card"],[class*="panel"],[class*="box"],[class*="lesson"],[class*="example"],[class*="content"],[class*="note"],[class*="callout"],[class*="stat"] {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+}
+/* Keep outlines and the red cyberpunk double-line accents visible */
+.stat,.panel,.tile,.terminal,.card,.guide-card,.tool-card,.content-card,article,
+.terminal-panel,.side-panel,.profile-card,.stat-card {
+  border-color: rgba(255,32,43,.9) !important;
+}
+
 </style></head><body><header><div class="wrap"><a class="brand" href="index.html">VECTOR<span>EDGEMAX</span></a><a class="back" href="index.html">← Home</a></div></header><main class="wrap"><p class="level">VECTOR EDGEMAX / LEARNING PATH</p><h1>Security Tools: Practical Field Guide</h1><p>A categorized guide to widely used security tools, what each does, and safe starter workflows.</p><div class="notice">Study in order, practise in a lab you own or have explicit permission to test, take notes, and revisit each level. Examples are educational; never run security tests against systems without authorization.</div>
 <p>No single tool is “best” for every job. Choose based on the authorized objective, operating system, skill level, data sensitivity and maintenance status.</p><h2>Network discovery and diagnostics</h2><div class="panel"><h3>Nmap</h3><p>Network inventory and service discovery. Start only with your lab target.</p><pre>nmap -sn 192.168.56.0/24
 nmap -sV 192.168.56.10</pre><p>Use the lab subnet you control; service detection can generate traffic. Do not scan public ranges without authorization.</p><h3>Wireshark / tcpdump</h3><p>Inspect packets and troubleshoot protocols. Capture only traffic you are allowed to inspect; protect capture files because they may contain sensitive data.</p><pre>tcpdump -i any -nn 'port 53'</pre><h3>OpenSSH</h3><p>Secure remote administration and file transfer. Prefer keys, verified host keys, least privilege and restricted access.</p></div><h2>Web and application security</h2><div class="panel"><h3>OWASP ZAP</h3><p>Open-source web application proxy/scanner. Configure a local training target, browse through the proxy, review passive findings, then run active tests only where explicitly allowed.</p><h3>Burp Suite Community</h3><p>Intercepting proxy for manually inspecting HTTP requests and responses. Use a test browser profile and training app; avoid intercepting other people's traffic.</p><h3>Browser DevTools</h3><p>Inspect DOM, requests, cookies, storage, console errors, performance and security-related headers.</p><h3>Dependency and code scanning</h3><p>Use tools such as Dependabot, pip-audit, npm audit, Semgrep and CodeQL to identify known dependency or code patterns. Review findings rather than treating every alert as a confirmed vulnerability.</p></div><h2>Penetration-testing frameworks</h2><div class="panel"><h3>Metasploit Framework</h3><p>Modular framework with auxiliary, exploit, payload and post modules. Learn console help, module documentation and options in a disposable lab. A module's existence does not imply it is safe or authorized to run.</p><pre>msfconsole
