@@ -166,7 +166,21 @@
       .stats-grid { grid-template-columns: 1fr; }
       .cta-buttons { flex-direction: column; }
     }
-  </style>
+  /* Shared VectorEdgeMax red-team visual system */
+:root{--vem-red:#ff202b;--vem-red-hot:#ff3541;--vem-ink:#030203;--vem-cyan:#35e7ff;--vem-green:#00ff9d}
+html{background:#020203}
+body{background-color:#020203;background-image:linear-gradient(180deg,rgba(0,0,0,.24),rgba(0,0,0,.76)),url('red-team-background.svg');background-position:center top;background-size:cover;background-attachment:fixed;background-repeat:no-repeat}
+header,nav,.site-header{background:rgba(3,2,3,.9);border-color:#ff202b66;backdrop-filter:blur(7px)}
+a{transition:color .18s ease,text-shadow .18s ease}a:hover{text-shadow:0 0 9px #ff202b66}
+.card,.guide-card,.tool-card,.content-card,article,.terminal-panel,.side-panel,.notice,.callout{position:relative;border:1px solid var(--vem-red)!important;border-radius:12px 2px 12px 12px!important;background:linear-gradient(145deg,rgba(18,4,7,.96),rgba(2,3,4,.97))!important;box-shadow:inset 0 0 0 1px rgba(255,32,43,.18),0 0 15px rgba(255,0,20,.08)}
+.card:before,.guide-card:before,.tool-card:before,.content-card:before,.terminal-panel:before,.side-panel:before{content:"";position:absolute;inset:4px;border:1px solid rgba(255,48,59,.58);clip-path:polygon(0 0,calc(100% - 22px) 0,100% 22px,100% 100%,0 100%);pointer-events:none;border-radius:8px}
+.card:after,.guide-card:after,.tool-card:after,.content-card:after{content:"";position:absolute;top:0;right:0;width:23px;height:23px;border-top:2px solid #ff4a53;border-right:2px solid #ff4a53;clip-path:polygon(0 0,100% 0,100% 100%);pointer-events:none}
+.card:hover,.guide-card:hover,.tool-card:hover{border-color:#ff6b73!important;box-shadow:0 0 22px #ff102533,inset 0 0 0 1px #ff303b66;transform:translateY(-2px)}
+h1,h2,h3,.section-title{color:#fff;text-shadow:0 0 10px #ff202b55}button,.button,.btn,input[type=submit]{border-color:#ff303b}
+.terminal-panel{border:2px solid #ff202b!important;border-radius:18px 3px 16px 16px!important;box-shadow:inset 0 0 0 2px #5c0a12,0 0 24px #ff001033}.terminal-panel:before{inset:5px;border:1px solid #ff303b}
+@media(max-width:700px){body{background-attachment:scroll;background-position:center top}.card,.guide-card,.tool-card,.content-card{border-radius:10px 2px 10px 10px!important}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
 </head>
 <body>
   <header>
