@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#070b12">
+  <meta name="description" content="VectorEdgeMax — Cybersecurity, ethical hacking education, Linux, networking and secure coding.">
+  <title>VectorEdgeMax | Cybersecurity & Development</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap');
+
+    :root {
+      --bg: #050b12;
+      --panel: #0d1724;
+      --cyan: #36e5ff;
+      --green: #0efb8a;
+      --red: #ff3b4d;
+      --deep-red: #ff1a2a;
+      --text: #ebf7ff;
+      --muted: #9bb5ca;
+      --border: #1f2e3d;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Share Tech Mono", monospace;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: var(--cyan);
+      text-decoration: none;
+      transition: 0.25s ease;
+    }
+
+    a:hover {
+      color: var(--cyan);
+      text-decoration: underline;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(5, 11, 18, 0.82);
+      border-bottom: 1px solid rgba(54, 229, 255, 0.4);
+      backdrop-filter: blur(12px);
+    }
+
+    nav {
+      min-height: 72px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .brand {
+      font-size: 1.15rem;
+      letter-spacing: 2px;
+      font-weight: 700;
+      color: white;
+    }
+
+    .brand span {
+      color: var(--cyan);
+      text-shadow: 0 0 10px rgba(54, 229, 255, 0.8);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .nav-profile-logo {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 2px solid var(--cyan);
+      object-fit: cover;
+      box-shadow: 0 0 18px rgba(54,229,255,0.5);
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+
+    .nav-profile-logo:hover {
+      box-shadow: 0 0 26px rgba(14, 251, 138, 0.8);
+      border-color: var(--green);
+    }
+
+    .hero {
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 30%, rgba(54,229,255,0.16), transparent 34%),
+        radial-gradient(circle at 50% 70%, rgba(255,59,77,0.08), transparent 28%),
+        #050b12;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent 0%, rgba(255,59,77,0.06) 40%, transparent 100%);
+      animation: sweep 7s ease-in-out infinite;
+    }
+
+    @keyframes sweep {
+      0% { transform: translateX(-100%); opacity: 0; }
+      30% { opacity: 1; }
+      100% { transform: translateX(100%); opacity: 0; }
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      width: 100%;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 8px 18px;
+      border-radius: 999px;
+      border: 2px solid var(--cyan);
+      color: var(--cyan);
+      letter-spacing: 2px;
+      font-weight: 700;
+      text-transform: uppercase;
+      box-shadow: 
+        0 0 12px rgba(54,229,255,0.4),
+        inset 0 0 12px rgba(54,229,255,0.1);
+      margin-bottom: 26px;
+      background: rgba(54,229,255,0.04);
+      animation: eyebrowPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes eyebrowPulse {
+      0%, 100% {
+        box-shadow: 
+          0 0 12px rgba(54,229,255,0.4),
+          inset 0 0 12px rgba(54,229,255,0.1);
+        border-color: var(--cyan);
+      }
+      50% {
+        box-shadow: 
+          0 0 24px rgba(54,229,255,0.8),
+          inset 0 0 20px rgba(54,229,255,0.25);
+        border-color: rgba(54,229,255,0.9);
+      }
+    }
+
+    .brand-title {
+      position: relative;
+      display: inline-block;
+      font-family: "Orbitron", sans-serif;
+      font-size: clamp(3.2rem, 8vw, 9rem);
+      line-height: 0.95;
+      letter-spacing: 2px;
+      font-weight: 900;
+      color: var(--cyan);
+      text-shadow:
+        0 0 12px rgba(54,229,255,0.6),
+        0 0 22px rgba(54,229,255,0.35),
+        0 0 40px rgba(54,229,255,0.18);
+      animation: titlePulse 2.8s ease-in-out infinite;
+      filter: drop-shadow(0 0 18px rgba(54,229,255,0.65));
+      z-index: 2;
+    }
+
+    .brand-title::before,
+    .brand-title::after {
+      content: attr(data-text);
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      mix-blend-mode: screen;
+    }
+
+    .brand-title::before {
+      color: rgba(255,59,77,0.95);
+      transform: translateX(-2px);
+      text-shadow: 0 0 14px rgba(255,59,77,0.9), 0 0 25px rgba(255,59,77,0.7);
+      animation: flameLeft 2.2s ease-in-out infinite;
+      clip-path: polygon(0 0, 100% 0, 82% 100%, 0 100%);
+    }
+
+    .brand-title::after {
+      color: rgba(54,229,255,0.9);
+      transform: translateX(2px);
+      text-shadow: 0 0 14px rgba(54,229,255,0.8), 0 0 25px rgba(54,229,255,0.5);
+      animation: flameRight 2.8s ease-in-out infinite;
+      clip-path: polygon(18% 0, 100% 0, 100% 100%, 0 100%);
+    }
+
+    @keyframes titlePulse {
+      0%, 100% {
+        transform: translateY(0px);
+        filter: drop-shadow(0 0 18px rgba(54,229,255,0.75));
+      }
+      50% {
+        transform: translateY(-3px);
+        filter: drop-shadow(0 0 26px rgba(255,59,77,0.4));
+      }
+    }
+
+    @keyframes flameLeft {
+      0%, 100% { transform: translateX(-3px); opacity: 0.35; }
+      50% { transform: translateX(2px); opacity: 0.9; }
+    }
+
+    @keyframes flameRight {
+      0%, 100% { transform: translateX(4px); opacity: 0.3; }
+      50% { transform: translateX(-3px); opacity: 0.8; }
+    }
+
+    .hero p {
+      max-width: 720px;
+      margin: 20px auto 28px;
+      color: var(--muted);
+      font-size: 1.08rem;
+      letter-spacing: 0.5px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 12px 22px;
+      margin: 5px;
+      border: 2px solid var(--cyan);
+      border-radius: 10px;
+      background: rgba(54,229,255,0.06);
+      color: var(--cyan);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: 0.25s ease;
+      box-shadow: 
+        0 0 14px rgba(54,229,255,0.3),
+        inset 0 0 14px rgba(54,229,255,0.05);
+      cursor: pointer;
+      animation: buttonPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes buttonPulse {
+      0%, 100% {
+        box-shadow: 
+          0 0 14px rgba(54,229,255,0.3),
+          inset 0 0 14px rgba(54,229,255,0.05);
+      }
+      50% {
+        box-shadow: 
+          0 0 24px rgba(54,229,255,0.6),
+          inset 0 0 20px rgba(54,229,255,0.15);
+      }
+    }
+
+    .button.primary {
+      background: rgba(54,229,255,0.12);
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      color: var(--green);
+      border-color: var(--green);
+      background: rgba(14, 251, 138, 0.08);
+      box-shadow: 
+        0 0 26px rgba(14, 251, 138, 0.5),
+        inset 0 0 20px rgba(14, 251, 138, 0.1);
+    }
+
+    section {
+      padding: 68px 0;
+      border-bottom: 1px solid rgba(54,229,255,0.08);
+    }
+
+    .section-title {
+      margin: 0 0 8px;
+      font-size: clamp(1.7rem, 4vw, 2.5rem);
+      color: var(--cyan);
+      font-family: "Orbitron", sans-serif;
+      letter-spacing: 1px;
+      text-shadow: 0 0 12px rgba(54,229,255,0.3);
+    }
+
+    .section-intro {
+      color: var(--muted);
+      margin-bottom: 26px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+      transition: 0.3s ease;
+      cursor: pointer;
+      min-height: 320px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover {
+      border-color: var(--green);
+      transform: translateY(-6px);
+      box-shadow: 
+        0 0 26px rgba(14, 251, 138, 0.25),
+        inset 0 0 14px rgba(14, 251, 138, 0.05);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      color: var(--cyan);
+    }
+
+    .card p {
+      color: var(--muted);
+      margin-bottom: 14px;
+      flex-grow: 1;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 5px 10px;
+      background: rgba(14,251,138,0.08);
+      border: 1px solid rgba(14,251,138,0.5);
+      color: var(--green);
+      border-radius: 999px;
+      font-size: 0.75rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .notice {
+      background: rgba(54,229,255,0.04);
+      border-left: 3px solid var(--cyan);
+      border-radius: 0 12px 12px 0;
+      padding: 18px 20px;
+      color: var(--muted);
+    }
+
+    .contact-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      margin-top: 24px;
+      flex-wrap: wrap;
+    }
+
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid var(--cyan);
+      padding: 12px 22px;
+      border-radius: 10px;
+      background: rgba(54,229,255,0.06);
+      color: var(--cyan);
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.25s ease;
+      box-shadow: 0 0 14px rgba(54,229,255,0.3);
+      animation: buttonPulse 2s ease-in-out infinite;
+    }
+
+    .contact-btn:hover {
+      color: var(--green);
+      border-color: var(--green);
+      background: rgba(14, 251, 138, 0.08);
+      box-shadow: 0 0 26px rgba(14, 251, 138, 0.5);
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 32px 0 42px;
+      border-top: 1px solid rgba(54,229,255,0.1);
+    }
+
+    @media (max-width: 760px) {
+      .grid { grid-template-columns: 1fr; }
+      .nav-links { gap: 10px 12px; }
+      .hero { min-height: 78vh; }
+      .card { min-height: 280px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="container" aria-label="Main navigation">
+      <a class="brand" href="#home">VECTOR<span>EDGEMAX</span></a>
+      <div class="nav-links">
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#focus" class="nav-link">Focus</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#contact" class="nav-link">Contact</a>
+        <a href="../profile.html" class="profile-link"><img src="../Neon Cybersecurity VE Emblem.png" alt="VectorEdgeMax profile logo" class="nav-profile-logo"></a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-inner container">
+        <div class="eyebrow">Learn · Build · Defend</div>
+        <h1 style="margin: 0 0 18px;">Welcome to</h1>
+        <div class="brand-title" data-text="VectorEdgeMax">VectorEdgeMax</div>
+        <p>
+          Exploring cybersecurity, ethical hacking, Linux, networking and Python —
+          building tools and knowledge to serve real-world security challenges.
+        </p>
+        <button class="button primary">Explore Topics</button>
+        <button class="button">View Projects</button>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title">About VectorEdgeMax</h2>
+        <p class="section-intro">ALEX ALDERSON — Cybersecurity Learner & Developer</p>
+        <div class="notice">
+          I'm a student exploring cybersecurity, ethical hacking, and development—building tools and knowledge to serve real-world security challenges.
+          My mission is to learn openly, build useful projects, and practise cybersecurity responsibly.
+        </div>
+      </div>
+    </section>
+
+    <section id="focus">
+      <div class="container">
+        <h2 class="section-title">Current Learning Focus</h2>
+        <p class="section-intro">Areas I'm actively exploring and building expertise in.</p>
+        <div class="grid">
+          <a class="card" href="https://vectoredgemax.github.io/networking.html" aria-label="Open Networking" style="color: inherit; text-decoration: none;">
+            <div class="symbol">🌐</div>
+            <h3>Networking</h3>
+            <p>TCP/IP, subnetting, DNS, routing, packet analysis and network defense — from beginner to advanced.</p>
+            <span class="badge">Open Learning Guide →</span>
+          </a>
+          <a class="card" href="https://vectoredgemax.github.io/payloads-exploits.html" aria-label="Open Payloads & Exploits" style="color: inherit; text-decoration: none;">
+            <div class="symbol">🔥</div>
+            <h3>Payloads & Exploits</h3>
+            <p>Payload concepts, types, safe lab requirements, Metasploit basics and harmless practice examples.</p>
+            <span class="badge">Open Learning Guide →</span>
+          </a>
+          <a class="card" href="https://vectoredgemax.github.io/linux-systems.html" aria-label="Open Linux & Systems" style="color: inherit; text-decoration: none;">
+            <div class="symbol">🐧</div>
+            <h3>Linux & Systems</h3>
+            <p>Linux fundamentals, commands, users, services, scripting, troubleshooting and system hardening.</p>
+            <span class="badge">Open Learning Guide →</span>
+          </a>
+          <a class="card" href="https://vectoredgemax.github.io/python.html" aria-label="Open Python" style="color: inherit; text-decoration: none;">
+            <div class="symbol">🐍</div>
+            <h3>Python</h3>
+            <p>A level-by-level Python course with runnable examples, projects, testing and advanced topics.</p>
+            <span class="badge">Open Learning Guide →</span>
+          </a>
+          <a class="card" href="https://vectoredgemax.github.io/web-security.html" aria-label="Open Web Security" style="color: inherit; text-decoration: none;">
+            <div class="symbol">🛡️</div>
+            <h3>Web Security</h3>
+            <p>HTTP, OWASP risks, authentication, secure coding, testing workflow and remediation.</p>
+            <span class="badge">Open Learning Guide →</span>
+          </a>
+          <a class="card" href="https://vectoredgemax.github.io/ethical-hacking.html" aria-label="Open Ethical Hacking" style="color: inherit; text-decoration: none;">
+            <div class="symbol">⚔️</div>
+            <h3>Ethical Hacking</h3>
+            <p>Permission and scope, assessment methodology, legal labs, reporting and professional ethics.</p>
+            <span class="badge">Open Learning Guide →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <h2 class="section-title">Projects & Resources</h2>
+        <p class="section-intro">Building useful tools, notes and practical code for security and development.</p>
+        <div class="grid">
+          <a class="card" href="https://vectoredgemax.github.io/security-tools.html" aria-label="Open Security Tools" style="color: inherit; text-decoration: none;">
+            <div class="symbol">🛠️</div>
+            <h3>Security Tools</h3>
+            <p>A categorized guide to widely used tools, their purpose and safe starter workflows.</p>
+            <span class="badge">Open Learning Guide →</span>
+          </a>
+          <a class="card" href="https://vectoredgemax.github.io/blog.html" aria-label="Open Learning Notes" style="color: inherit; text-decoration: none;">
+            <div class="symbol">📚</div>
+            <h3>Learning Notes</h3>
+            <p>Documentation on Linux, networking, security concepts and practical experiments.</p>
+            <span class="badge">Read Notes →</span>
+          </a>
+          <a class="card" href="https://vectoredgemax.github.io/commands-list.html" aria-label="Open Commands List" style="color: inherit; text-decoration: none;">
+            <div class="symbol">⌨️</div>
+            <h3>Commands List</h3>
+            <p>Quick reference for Linux, Windows, macOS and other systems, organized by task.</p>
+            <span class="badge">Browse Commands →</span>
+          </a>
+          <a class="card" href="https://vectoredgemax.github.io/useful-code.html" aria-label="Open Useful Code" style="color: inherit; text-decoration: none;">
+            <div class="symbol">💻</div>
+            <h3>Useful Code</h3>
+            <p>Ready-to-use system and Python examples, progressing from basic commands to advanced projects.</p>
+            <span class="badge">Open Learning Guide →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <h2 class="section-title">Connect & Collaborate</h2>
+        <p class="section-intro">
+          Open to learning, collaboration, feedback and discussions around security, development and ethical research.
+        </p>
+        <div class="contact-buttons">
+          <button class="contact-btn">Visit GitHub</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p><strong>VECTOR EDGEMAX</strong> · Learn ethically. Build responsibly.</p>
+      <p>© <span id="year">2026</span> VectorEdgeMax. Built for learning.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Sound URLs
+    const navSoundUrl = 'https://raw.githubusercontent.com/VectorEdgeMax/vectoredgemax.github.io/main/47313572-sci-fi-sfx-8-350836.mp3';
+
+    const navAudio = new Audio(navSoundUrl);
+
+    function playNavSound() {
+      navAudio.currentTime = 0;
+      navAudio.play().catch(() => {
+        console.log('Nav sound playback failed (possibly blocked by browser)');
+      });
+    }
+
+    // Nav links (Home, About, Focus, Projects, Contact)
+    document.querySelectorAll('.nav-link').forEach((link) => {
+      link.addEventListener('click', playNavSound);
+    });
+
+    // Profile logo link: play sound before opening the profile page
+    document.querySelector('.profile-link').addEventListener('click', function (e) {
+      e.preventDefault();
+
+      const destination = this.href;
+      const audio = new Audio(navSoundUrl);
+      audio.volume = 0.7;
+
+      audio.addEventListener('ended', () => {
+        window.location.href = destination;
+      }, { once: true });
+
+      audio.addEventListener('error', () => {
+        window.location.href = destination;
+      }, { once: true });
+
+      audio.play().catch(() => {
+        window.location.href = destination;
+      });
+
+      // Fallback in case the audio does not fire its ended event.
+      setTimeout(() => {
+        if (window.location.href !== destination) {
+          window.location.href = destination;
+        }
+      }, 1200);
+    });
+
+    // Hero buttons (Explore Topics, View Projects)
+    document.querySelectorAll('.button').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        playNavSound();
+        if (btn.textContent.includes('Explore Topics')) {
+          document.getElementById('focus').scrollIntoView({ behavior: 'smooth' });
+        } else if (btn.textContent.includes('View Projects')) {
+          document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Contact button (Visit GitHub)
+    document.querySelector('.contact-btn').addEventListener('click', () => {
+      playNavSound();
+      window.open('https://github.com/VectorEdgeMax', '_blank');
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
