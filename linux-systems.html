@@ -1,0 +1,52 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Learn Linux concepts, the filesystem, shell, users, processes, services, networking, troubleshooting and system hardening."><meta name="theme-color" content="#070b12"><title>Linux & Systems: From Basics to Administration | VectorEdgeMax</title><style>@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap');:root{--bg:#050b12;--panel:#0d1724;--cyan:#36e5ff;--green:#0efb8a;--text:#ebf7ff;--muted:#9bb5ca;--border:#1f2e3d}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.8 'Share Tech Mono',monospace}a{color:var(--cyan)}.wrap{width:min(980px,92%);margin:auto}header{position:sticky;top:0;background:#050b12ed;border-bottom:1px solid #36e5ff66;padding:15px;z-index:2}.brand,h1,h2,h3{font-family:Orbitron,sans-serif}.brand{color:white;text-decoration:none;font-weight:bold;letter-spacing:2px}.brand span,h1,h2{color:var(--cyan)}main{padding:35px 0 70px}h1{font-size:clamp(2rem,5vw,3.4rem);line-height:1.3}h2{margin-top:42px;border-bottom:1px solid #36e5ff44;padding-bottom:8px}h3{color:var(--green)}p,li{color:var(--muted)}.panel{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:18px;margin:16px 0}.notice{border-left:3px solid var(--green);padding:12px 17px;background:#0efb8a0a;color:var(--muted)}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#02070c;border:1px solid var(--border);border-radius:9px;padding:15px;color:var(--green);overflow-x:auto}code{color:var(--green)}.level{color:var(--green);letter-spacing:1px;font-size:.8rem}footer{border-top:1px solid var(--border);text-align:center;padding:25px;color:var(--muted)}.toc a{display:inline-block;margin:5px 12px 5px 0}.back{float:right}@media(max-width:600px){.back{float:none;display:block;margin-top:8px}main{padding-top:20px}}</style></head><body><header><div class="wrap"><a class="brand" href="index.html">VECTOR<span>EDGEMAX</span></a><a class="back" href="index.html">← Home</a></div></header><main class="wrap"><p class="level">VECTOR EDGEMAX / LEARNING PATH</p><h1>Linux & Systems: From Basics to Administration</h1><p>Learn Linux concepts, the filesystem, shell, users, processes, services, networking, troubleshooting and system hardening.</p><div class="notice">Study in order, practise in a lab you own or have explicit permission to test, take notes, and revisit each level. Examples are educational; never run security tests against systems without authorization.</div>
+<h2>1 — What Linux is</h2><div class="panel"><p>Linux is the kernel; a distribution combines it with utilities, package management and applications. Examples include Ubuntu, Debian, Fedora, Arch and Kali. Kali is security-focused, but beginners can learn most Linux administration on Ubuntu or Debian.</p><p>Important concepts: kernel, user space, shell, terminal, process, service/daemon, package, filesystem, permissions, logs and system calls.</p></div>
+<h2>2 — Filesystem and navigation</h2><pre>pwd                 # current directory
+ls -lah             # list files, including hidden
+cd /var/log         # change directory
+mkdir practice
+touch notes.txt
+cp notes.txt copy.txt
+mv copy.txt archive.txt
+cat notes.txt
+less /var/log/syslog
+find . -name "*.txt"</pre><p><code>/</code> is the root directory; <code>/home</code> stores user homes, <code>/etc</code> configuration, <code>/var/log</code> logs, <code>/tmp</code> temporary files, <code>/usr</code> most user-space programs and libraries, and <code>/dev</code> device interfaces. Exact log paths vary by distribution.</p>
+<h2>3 — Permissions and users</h2><pre>whoami
+id
+groups
+ls -l
+chmod 640 notes.txt
+chown user:group notes.txt   # requires suitable privileges
+sudo command</pre><p>Read/write/execute permissions apply to owner, group and others. Prefer least privilege; do not run every command as root. Understand <code>rwx</code>, numeric modes, ownership, sudo policy and why world-writable permissions can be dangerous.</p>
+<h2>4 — Packages, processes and services</h2><pre># Debian / Ubuntu
+sudo apt update
+apt search package-name
+sudo apt install package-name
+sudo apt remove package-name
+
+ps aux
+top
+pgrep -a ssh
+kill -TERM PID
+systemctl status ssh
+journalctl -u ssh --since today</pre><p>Use your distribution's official repositories. Confirm package names and service names for your system; avoid copying unfamiliar installation scripts directly into a root shell.</p>
+<h2>5 — Storage and system health</h2><pre>df -h
+du -sh ~/Downloads
+free -h
+uptime
+lsblk
+mount
+dmesg --level=err,warn</pre><p>Learn partitions, filesystems, mount points, swap, disk usage, backups and restore tests. Before destructive storage commands, verify the device name and maintain a backup.</p>
+<h2>6 — Networking and remote access</h2><pre>ip addr
+ip route
+ss -tulpen
+getent hosts example.com
+curl -I https://example.com
+ssh user@lab-host
+scp report.txt user@lab-host:~/</pre><p>Use SSH keys, disable password login where appropriate after testing access, restrict management ports and keep host keys verified. Do not expose admin services to the public internet without a reviewed security design.</p>
+<h2>7 — Bash scripting</h2><pre>#!/usr/bin/env bash
+set -eu
+printf 'Host: %s\n' "$(hostname)"
+printf 'Date: %s\n' "$(date -Is)"
+df -h /
+</pre><p>Learn quoting, variables, exit codes, pipes, redirection, loops, functions and safe error handling. Test scripts on sample files before pointing them at important data.</p>
+<h2>8 — Hardening and troubleshooting</h2><ul><li>Patch regularly; remove unused packages and services.</li><li>Use unique accounts, MFA for remote-access portals, least privilege and strong SSH configuration.</li><li>Configure a host firewall with default-deny inbound policy where practical.</li><li>Review authentication logs, service logs, listening ports and scheduled jobs.</li><li>Use backups, time synchronization, disk encryption and recovery procedures.</li><li>Investigate in order: reproduce issue → check service status → inspect logs → check resource use → check network → document fix.</li></ul><h2>Practice plan</h2><div class="panel"><ol><li>Install a Linux VM and take a snapshot.</li><li>Create users, groups, directories and files with appropriate permissions.</li><li>Install a package, inspect a service and find its logs.</li><li>Write a read-only system inventory script.</li><li>Harden SSH/firewall in a lab and verify both allowed and blocked traffic.</li></ol></div><p><a href="index.html">← Back to all learning cards</a></p></main><footer>VectorEdgeMax · Learn ethically. Build responsibly. · © 2026</footer></body></html>
