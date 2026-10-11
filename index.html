@@ -619,12 +619,7 @@
       link.addEventListener('click', playNavSound);
     });
 
-    // Profile logo link: play sound before opening the profile page
-    document.querySelector('.profile-link').addEventListener('click', function (e) {
-      e.preventDefault();
-
-      playNavSound();
-    });
+    // Profile logo navigation is handled by the shared animated transition.
 
     // Card navigation and sound are handled by the shared animated page transition.
 
