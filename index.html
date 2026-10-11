@@ -173,6 +173,37 @@ header {
   -webkit-backdrop-filter: blur(5px) !important;
 }
 
+
+
+/* Screenshot-targeted fix: these two large outer sections still have opaque fills */
+.layout > section.panel,
+.layout > section.panel:nth-child(2),
+.layout > section.panel:first-child {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  box-shadow: none !important;
+}
+/* Clear the learning-path card surfaces too; retain outlines and cut-corner rails */
+.layout .tiles .tile,
+.layout .tiles .tile:hover {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  box-shadow: none !important;
+}
+/* Keep only the inner terminal glass blur */
+.layout > section.panel:first-child .terminal {
+  background: rgba(2,3,5,.3) !important;
+  background-color: rgba(2,3,5,.3) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+}
+
 </style></head>
 <body><header><nav class="wrap"><a class="brand" href="index.html">VECTOR<span>EDGEMAX</span></a><div class="switches"><a class="switch" href="backups/old-dashboard.html">Old Dashboard</a><a class="profile-avatar" href="profile.html" aria-label="Open profile" title="Open Profile"><img src="Neon%20Cybersecurity%20VE%20Emblem.png" alt="VectorEdgeMax profile"></a></div></nav></header>
 <main class="wrap"><section class="hero"><div class="eyebrow">LEARN · BUILD · DEFEND</div><h1>VectorEdgeMax</h1><p>Your cybersecurity learning hub. Explore guides, practise safe Linux commands in the browser, and jump into your next topic.</p><div class="stats"><div class="stat"><strong>06</strong><span>Core learning paths</span></div><div class="stat"><strong>SAFE</strong><span>Local command simulator</span></div><div class="stat"><strong>01</strong><span>Mission: keep learning</span></div></div></section>
