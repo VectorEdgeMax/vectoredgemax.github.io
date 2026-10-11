@@ -204,6 +204,30 @@ header {
   -webkit-backdrop-filter: blur(14px) !important;
 }
 
+
+
+/* Compact the terminal's OUTER frame to fit its actual contents */
+.layout > section.panel:first-child {
+  padding: 14px !important;
+  align-self: start !important;
+  height: fit-content !important;
+  min-height: 0 !important;
+}
+.layout > section.panel:first-child .section-title {
+  margin-bottom: 10px !important;
+}
+.layout > section.panel:first-child .terminal {
+  height: auto !important;
+  min-height: 0 !important;
+}
+.layout > section.panel:first-child .termout {
+  height: 190px !important;
+  min-height: 0 !important;
+}
+.layout > section.panel:first-child .hint {
+  margin-bottom: 0 !important;
+}
+
 </style></head>
 <body><header><nav class="wrap"><a class="brand" href="index.html">VECTOR<span>EDGEMAX</span></a><div class="switches"><a class="switch" href="backups/old-dashboard.html">Old Dashboard</a><a class="profile-avatar" href="profile.html" aria-label="Open profile" title="Open Profile"><img src="Neon%20Cybersecurity%20VE%20Emblem.png" alt="VectorEdgeMax profile"></a></div></nav></header>
 <main class="wrap"><section class="hero"><div class="eyebrow">LEARN · BUILD · DEFEND</div><h1>VectorEdgeMax</h1><p>Your cybersecurity learning hub. Explore guides, practise safe Linux commands in the browser, and jump into your next topic.</p><div class="stats"><div class="stat"><strong>06</strong><span>Core learning paths</span></div><div class="stat"><strong>SAFE</strong><span>Local command simulator</span></div><div class="stat"><strong>01</strong><span>Mission: keep learning</span></div></div></section>
