@@ -405,7 +405,37 @@
       .card { min-height: 280px; }
     }
   </style>
-</head>
+
+    /* Shared cyberpunk page transition */
+    @keyframes vemPageEnter {
+      from { opacity: 0; transform: translateY(14px) scale(.99); filter: blur(5px); }
+      to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+    }
+    @keyframes vemOverlayEnter {
+      0% { opacity: 0; clip-path: inset(0 0 100% 0); }
+      35% { opacity: 1; clip-path: inset(0 0 0 0); }
+      100% { opacity: 1; clip-path: inset(0 0 0 0); }
+    }
+    @keyframes vemOverlayExit {
+      0% { opacity: 0; clip-path: inset(100% 0 0 0); }
+      35% { opacity: 1; clip-path: inset(0 0 0 0); }
+      100% { opacity: 1; clip-path: inset(0 0 0 0); }
+    }
+    body { animation: vemPageEnter .55s cubic-bezier(.2,.75,.25,1) both; }
+    .vem-page-transition {
+      position: fixed; inset: 0; z-index: 99999; pointer-events: none;
+      opacity: 0; background:
+        radial-gradient(circle at 50% 50%, rgba(54,229,255,.2), transparent 45%),
+        linear-gradient(135deg, #050b12 0%, #071b29 55%, #10222d 100%);
+      border-bottom: 2px solid #36e5ff;
+    }
+    .vem-page-transition.is-active { animation: vemOverlayExit .38s ease-in both; }
+    @media (prefers-reduced-motion: reduce) {
+      body { animation: none; }
+      .vem-page-transition.is-active { animation-duration: .01ms; }
+    }
+
+  </head>
 <body>
   <header>
     <nav class="container" aria-label="Main navigation">
@@ -581,6 +611,8 @@
     function playCardSound() {
       playTone({ frequency: 980, endFrequency: 320, duration: 0.16, type: 'triangle', volume: 0.1 });
     }
+    window.playCardSound = playCardSound;
+    window.playNavSound = playNavSound;
 
     // Nav links (Home, About, Focus, Projects, Contact)
     document.querySelectorAll('.nav-link').forEach((link) => {
@@ -591,43 +623,10 @@
     document.querySelector('.profile-link').addEventListener('click', function (e) {
       e.preventDefault();
 
-      const destination = this.href;
-      const audio = new Audio(navSoundUrl);
-      audio.volume = 0.7;
-
-      audio.addEventListener('ended', () => {
-        window.location.href = destination;
-      }, { once: true });
-
-      audio.addEventListener('error', () => {
-        window.location.href = destination;
-      }, { once: true });
-
-      audio.play().catch(() => {
-        window.location.href = destination;
-      });
-
-      // Fallback in case the audio does not fire its ended event.
-      setTimeout(() => {
-        if (window.location.href !== destination) {
-          window.location.href = destination;
-        }
-      }, 1200);
+      playNavSound();
     });
 
-    // Cards: play a short local sound and then navigate.
-    document.querySelectorAll('.card').forEach((card) => {
-      card.addEventListener('click', function (event) {
-        if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey || event.button !== 0) {
-          playCardSound();
-          return;
-        }
-        event.preventDefault();
-        const destination = this.href;
-        playCardSound();
-        window.setTimeout(() => { window.location.href = destination; }, 180);
-      });
-    });
+    // Card navigation and sound are handled by the shared animated page transition.
 
     // Hero buttons (Explore Topics, View Projects)
     document.querySelectorAll('.button').forEach((btn) => {
@@ -649,5 +648,44 @@
 
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
+<script>
+
+  // Shared page transition for internal links and all guide cards.
+  (() => {
+    const overlay = document.createElement('div');
+    overlay.className = 'vem-page-transition';
+    overlay.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(overlay);
+
+    let navigating = false;
+    document.querySelectorAll('a[href]').forEach((link) => {
+      link.addEventListener('click', (event) => {
+        const href = link.getAttribute('href');
+        if (!href || href.startsWith('#') || link.target === '_blank' ||
+            event.defaultPrevented || event.button !== 0 ||
+            event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+
+        let destination;
+        try { destination = new URL(link.href, window.location.href); } catch (_) { return; }
+        if (destination.origin !== window.location.origin ||
+            (destination.pathname === window.location.pathname && destination.hash)) return;
+
+        event.preventDefault();
+        if (navigating) return;
+        navigating = true;
+
+        if (link.classList.contains('card') && typeof window.playCardSound === 'function') {
+          window.playCardSound();
+        } else if (typeof window.playNavSound === 'function') {
+          window.playNavSound();
+        }
+
+        overlay.classList.add('is-active');
+        window.setTimeout(() => { window.location.href = destination.href; }, 360);
+      });
+    });
+  })();
+
+</script>
 </body>
 </html>
