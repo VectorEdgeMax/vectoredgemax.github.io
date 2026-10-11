@@ -1,0 +1,81 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="A categorized quick reference for common operating-system commands, with notes on differences between shells."><meta name="theme-color" content="#070b12"><title>Commands List: Linux, Windows and Other Systems | VectorEdgeMax</title><style>@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap');:root{--bg:#050b12;--panel:#0d1724;--cyan:#36e5ff;--green:#0efb8a;--text:#ebf7ff;--muted:#9bb5ca;--border:#1f2e3d}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.8 'Share Tech Mono',monospace}a{color:var(--cyan)}.wrap{width:min(980px,92%);margin:auto}header{position:sticky;top:0;background:#050b12ed;border-bottom:1px solid #36e5ff66;padding:15px;z-index:2}.brand,h1,h2,h3{font-family:Orbitron,sans-serif}.brand{color:white;text-decoration:none;font-weight:bold;letter-spacing:2px}.brand span,h1,h2{color:var(--cyan)}main{padding:35px 0 70px}h1{font-size:clamp(2rem,5vw,3.4rem);line-height:1.3}h2{margin-top:42px;border-bottom:1px solid #36e5ff44;padding-bottom:8px}h3{color:var(--green)}p,li{color:var(--muted)}.panel{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:18px;margin:16px 0}.notice{border-left:3px solid var(--green);padding:12px 17px;background:#0efb8a0a;color:var(--muted)}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#02070c;border:1px solid var(--border);border-radius:9px;padding:15px;color:var(--green);overflow-x:auto}code{color:var(--green)}.level{color:var(--green);letter-spacing:1px;font-size:.8rem}footer{border-top:1px solid var(--border);text-align:center;padding:25px;color:var(--muted)}.toc a{display:inline-block;margin:5px 12px 5px 0}.back{float:right}@media(max-width:600px){.back{float:none;display:block;margin-top:8px}main{padding-top:20px}}</style></head><body><header><div class="wrap"><a class="brand" href="index.html">VECTOR<span>EDGEMAX</span></a><a class="back" href="index.html">← Home</a></div></header><main class="wrap"><p class="level">VECTOR EDGEMAX / LEARNING PATH</p><h1>Commands List: Linux, Windows and Other Systems</h1><p>A categorized quick reference for common operating-system commands, with notes on differences between shells.</p><div class="notice">Study in order, practise in a lab you own or have explicit permission to test, take notes, and revisit each level. Examples are educational; never run security tests against systems without authorization.</div>
+<h2>Linux / Unix / macOS (Terminal)</h2><div class="panel"><h3>Navigation and files</h3><pre>pwd
+ls -lah
+cd /path
+mkdir folder
+touch file.txt
+cp source.txt copy.txt
+mv old.txt new.txt
+rm file.txt
+find . -name "*.log"
+grep -R "error" ./logs</pre><p>Careful: <code>rm</code> deletes files; verify paths before use.</p><h3>System information</h3><pre>uname -a
+whoami
+id
+date
+uptime
+hostname
+df -h
+du -sh .
+free -h
+lsblk</pre><h3>Processes and services</h3><pre>ps aux
+top
+pgrep -a process-name
+kill -TERM PID
+systemctl status service-name
+journalctl -u service-name</pre><h3>Network and DNS</h3><pre>ip addr
+ip route
+ss -tulpen
+ping -c 4 example.com
+getent hosts example.com
+curl -I https://example.com
+ssh user@host
+scp file.txt user@host:~/</pre><h3>Permissions and packages</h3><pre>chmod 640 file.txt
+chown user:group file.txt
+sudo apt update
+sudo apt install package-name</pre><p>Package commands differ: Debian/Ubuntu use apt; Fedora uses dnf; Arch uses pacman; macOS commonly uses built-in tools or Homebrew.</p></div>
+<h2>Windows CMD</h2><div class="panel"><pre>cd
+dir
+mkdir folder
+copy source.txt copy.txt
+move old.txt new.txt
+del file.txt
+type file.txt
+where python
+whoami
+hostname
+systeminfo
+ipconfig /all
+ping example.com
+tracert example.com
+nslookup example.com
+netstat -ano
+tasklist
+taskkill /PID 1234 /T
+sfc /scannow</pre><p>Run administrative commands only when needed. <code>del</code> and <code>taskkill</code> can cause data loss or interrupt work.</p></div>
+<h2>Windows PowerShell</h2><div class="panel"><pre>Get-Location
+Get-ChildItem -Force
+Set-Location C:\Temp
+New-Item -ItemType Directory practice
+Copy-Item a.txt b.txt
+Move-Item old.txt new.txt
+Get-Content .\notes.txt
+Get-Command
+Get-Help Get-Process
+Get-ComputerInfo
+Get-Service
+Get-Process
+Get-NetIPConfiguration
+Test-Connection example.com
+Resolve-DnsName example.com
+Get-NetTCPConnection
+Get-FileHash .\file.txt -Algorithm SHA256</pre></div>
+<h2>macOS-specific useful commands</h2><div class="panel"><pre>sw_vers
+system_profiler SPHardwareDataType
+diskutil list
+networksetup -listallhardwareports
+ifconfig
+launchctl list
+brew list</pre><p>Some commands need administrator rights or additional tools. Review official documentation before changing services, disks or network settings.</p></div>
+<h2>Android, iOS and other systems</h2><div class="panel"><p><b>Android:</b> Settings provides most user administration. Android Debug Bridge (ADB) is a developer tool and requires explicit device authorization.</p><pre>adb devices
+adb shell getprop ro.build.version.release</pre><p><b>iOS/iPadOS:</b> most tasks use Settings and device-management tools; shell access is not generally exposed on a standard device. Use official Apple support and developer documentation.</p><p><b>BSD:</b> many Unix commands are similar, but service management, package managers and networking syntax can differ by FreeBSD/OpenBSD version.</p><p><b>Containers:</b> Docker and Kubernetes have their own command sets; learn them separately and operate only on your own environment.</p></div>
+<h2>Command safety habits</h2><ul><li>Use <code>--help</code> or <code>man command</code> (Linux/macOS) and <code>Get-Help</code> (PowerShell).</li><li>Check current directory, target path and privileges before write/delete commands.</li><li>Do not paste unknown commands from the internet into an administrator shell.</li><li>Use read-only inspection first; make backups before system changes.</li><li>Commands and flags vary by OS version and shell; this is a practical starter reference, not literally every command available.</li></ul><p><a href="index.html">← Back to all learning cards</a></p></main><footer>VectorEdgeMax · Learn ethically. Build responsibly. · © 2026</footer></body></html>
