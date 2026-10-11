@@ -28,6 +28,32 @@ button,.button,.btn,input[type=submit]{border-color:#ff303b}
 @media(max-width:700px){body{background-attachment:scroll;background-position:center top}.card,.guide-card,.tool-card,.content-card{border-radius:10px 2px 10px 10px!important}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 
+
+/* Dashboard refinement: wide horizontal tiles, clipped bottle-cap corner, red double rails */
+body{background:#020203 url('red-team-background.svg') center top/cover fixed no-repeat!important}
+body:before{background:linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,.78)),repeating-linear-gradient(135deg,transparent 0 55px,rgba(255,0,20,.035) 56px 58px)!important}
+.wrap{width:min(1540px,96%)}
+.layout{grid-template-columns:minmax(0,1.6fr) minmax(330px,.8fr);gap:18px}
+.tiles{grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+.tile{min-height:154px;padding:22px 24px 20px;position:relative;overflow:hidden;clip-path:polygon(0 0,calc(100% - 28px) 0,100% 28px,100% 100%,0 100%);border:1px solid #ff202b!important;border-radius:0!important;background:linear-gradient(145deg,rgba(17,3,6,.97),rgba(1,2,3,.97))!important;box-shadow:none!important}
+.tile:before{content:"";position:absolute;inset:4px;border:1px solid #ff3541;clip-path:polygon(0 0,calc(100% - 25px) 0,100% 25px,100% 100%,0 100%);pointer-events:none}
+.tile:after{content:"";position:absolute;top:0;right:0;width:27px;height:27px;background:linear-gradient(135deg,transparent 46%,#ff202b 48%,#ff202b 53%,transparent 55%);pointer-events:none}
+.tile h3{font-size:1rem;color:#fff;text-shadow:0 0 9px #ff202b77}
+.tile p{font-size:.9rem;line-height:1.6;color:#d0e2eb}
+.tile .emoji{font-size:1.8rem;filter:drop-shadow(0 0 7px #ff202b)}
+.tile:hover{transform:translateY(-3px);filter:brightness(1.15)}
+.panel{border:2px solid #ff202b!important;border-radius:16px 3px 16px 16px!important;padding:20px;position:relative;background:linear-gradient(145deg,rgba(14,3,5,.97),rgba(1,2,3,.97))!important;box-shadow:inset 0 0 0 2px #590811,0 0 22px #ff001022}
+.panel:before{content:"";position:absolute;inset:5px;border:1px solid #ff3541;clip-path:polygon(0 0,calc(100% - 26px) 0,100% 26px,100% 100%,0 100%);pointer-events:none}
+.terminal{border:2px solid #ff202b!important;border-radius:13px 2px 13px 13px!important;box-shadow:inset 0 0 0 2px #620912,0 0 24px #ff001033}
+.termbar{border-bottom:1px solid #ff303b;color:#ff858b}
+.promptrow{border-top:1px solid #ff303b}
+.promptrow input{border-color:#8b202b;background:#030304}
+.promptrow button,.switch{border-color:#ff303b;background:#26060a;color:#ff7c84}
+.switch.active{background:#ff202b;color:#fff}
+.stat{border:1px solid #ff303b!important;border-radius:10px 2px 10px 10px!important;background:rgba(10,3,5,.92)}
+@media(max-width:900px){.layout{grid-template-columns:1fr}.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){.tiles{grid-template-columns:1fr}.tile{min-height:130px;padding:18px}.panel{padding:14px}.wrap{width:94%}}
+
 </style></head>
 <body><header><nav class="wrap"><a class="brand" href="index.html">VECTOR<span>EDGEMAX</span></a><div class="switches"><a class="switch active" href="dashboard.html">New Dashboard</a><a class="switch" href="backups/old-dashboard.html">Old Dashboard</a><a class="switch" href="profile.html" aria-label="Profile">Profile ↗</a></div></nav></header>
 <main class="wrap"><section class="hero"><div class="eyebrow">LEARN · BUILD · DEFEND</div><h1>VectorEdgeMax</h1><p>Your cybersecurity learning hub. Explore guides, practise safe Linux commands in the browser, and jump into your next topic.</p><div class="stats"><div class="stat"><strong>06</strong><span>Core learning paths</span></div><div class="stat"><strong>SAFE</strong><span>Local command simulator</span></div><div class="stat"><strong>01</strong><span>Mission: keep learning</span></div></div></section>
