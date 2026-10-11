@@ -548,22 +548,13 @@
   <script>
     // Sound URLs
     const navSoundUrl = 'https://raw.githubusercontent.com/VectorEdgeMax/vectoredgemax.github.io/main/47313572-sci-fi-sfx-8-350836.mp3';
-    const cardSoundUrl = 'https://raw.githubusercontent.com/VectorEdgeMax/vectoredgemax.github.io/main/malarbrush-camera-flash-204151.mp3';
 
     const navAudio = new Audio(navSoundUrl);
-    const cardAudio = new Audio(cardSoundUrl);
 
     function playNavSound() {
       navAudio.currentTime = 0;
       navAudio.play().catch(() => {
         console.log('Nav sound playback failed (possibly blocked by browser)');
-      });
-    }
-
-    function playCardSound() {
-      cardAudio.currentTime = 0;
-      cardAudio.play().catch(() => {
-        console.log('Card sound playback failed (possibly blocked by browser)');
       });
     }
 
@@ -598,11 +589,6 @@
           window.location.href = destination;
         }
       }, 1200);
-    });
-
-    // Cards
-    document.querySelectorAll('.card').forEach((card) => {
-      card.addEventListener('click', playCardSound);
     });
 
     // Hero buttons (Explore Topics, View Projects)
