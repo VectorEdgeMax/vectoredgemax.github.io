@@ -1,0 +1,74 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="A level-by-level Python course with runnable examples, core concepts, projects, testing, automation and safe security scripting."><meta name="theme-color" content="#070b12"><title>Python: Beginner to Advanced Roadmap | VectorEdgeMax</title><style>@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap');:root{--bg:#050b12;--panel:#0d1724;--cyan:#36e5ff;--green:#0efb8a;--text:#ebf7ff;--muted:#9bb5ca;--border:#1f2e3d}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.8 'Share Tech Mono',monospace}a{color:var(--cyan)}.wrap{width:min(980px,92%);margin:auto}header{position:sticky;top:0;background:#050b12ed;border-bottom:1px solid #36e5ff66;padding:15px;z-index:2}.brand,h1,h2,h3{font-family:Orbitron,sans-serif}.brand{color:white;text-decoration:none;font-weight:bold;letter-spacing:2px}.brand span,h1,h2{color:var(--cyan)}main{padding:35px 0 70px}h1{font-size:clamp(2rem,5vw,3.4rem);line-height:1.3}h2{margin-top:42px;border-bottom:1px solid #36e5ff44;padding-bottom:8px}h3{color:var(--green)}p,li{color:var(--muted)}.panel{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:18px;margin:16px 0}.notice{border-left:3px solid var(--green);padding:12px 17px;background:#0efb8a0a;color:var(--muted)}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#02070c;border:1px solid var(--border);border-radius:9px;padding:15px;color:var(--green);overflow-x:auto}code{color:var(--green)}.level{color:var(--green);letter-spacing:1px;font-size:.8rem}footer{border-top:1px solid var(--border);text-align:center;padding:25px;color:var(--muted)}.toc a{display:inline-block;margin:5px 12px 5px 0}.back{float:right}@media(max-width:600px){.back{float:none;display:block;margin-top:8px}main{padding-top:20px}}</style></head><body><header><div class="wrap"><a class="brand" href="index.html">VECTOR<span>EDGEMAX</span></a><a class="back" href="index.html">← Home</a></div></header><main class="wrap"><p class="level">VECTOR EDGEMAX / LEARNING PATH</p><h1>Python: Beginner to Advanced Roadmap</h1><p>A level-by-level Python course with runnable examples, core concepts, projects, testing, automation and safe security scripting.</p><div class="notice">Study in order, practise in a lab you own or have explicit permission to test, take notes, and revisit each level. Examples are educational; never run security tests against systems without authorization.</div>
+<h2>Level 1 — First steps</h2><p>Python is a readable, general-purpose language used for automation, web apps, data work, testing and security tooling. Install Python 3 from the official source and verify with <code>python --version</code> or <code>python3 --version</code>.</p><pre>print("Hello, world!")
+name = input("Your name: ")
+print(f"Welcome, {name}!")</pre><h2>Level 2 — Types and variables</h2><pre>name = "Asha"       # str
+age = 14            # int
+score = 9.5         # float
+is_learning = True  # bool
+print(type(age))
+print(f"{name} is {age} years old")</pre><p>Learn strings, integers, floats, booleans, None, conversion, operators, comparisons and f-strings.</p><h2>Level 3 — Decisions and loops</h2><pre>score = 82
+if score >= 90:
+    grade = "A"
+elif score >= 75:
+    grade = "B"
+else:
+    grade = "Keep practising"
+print(grade)
+
+for number in range(1, 6):
+    print(number)
+
+count = 3
+while count > 0:
+    print(count)
+    count -= 1</pre><h2>Level 4 — Collections</h2><pre>topics = ["Linux", "Networking", "Python"]
+topics.append("Web Security")
+for topic in topics:
+    print(topic)
+
+ports = {"http": 80, "https": 443}
+print(ports.get("https"))
+
+unique_names = {"sam", "lee", "sam"}
+print(unique_names)</pre><p>Study list, tuple, set, dictionary, indexing, slicing, comprehensions and choosing the right structure.</p><h2>Level 5 — Functions and modules</h2><pre>def calculate_total(price, quantity=1):
+    if price < 0 or quantity < 0:
+        raise ValueError("Values must be non-negative")
+    return price * quantity
+
+print(calculate_total(12.5, 3))
+
+# Import a standard-library module
+import math
+print(math.sqrt(81))</pre><p>Learn parameters, return values, scope, docstrings, imports, packages and clean project structure.</p><h2>Level 6 — Files, errors and data</h2><pre>from pathlib import Path
+
+path = Path("notes.txt")
+path.write_text("Learn safely.\n", encoding="utf-8")
+print(path.read_text(encoding="utf-8"))
+
+try:
+    value = int("123")
+except ValueError:
+    print("Input must be an integer")</pre><p>Use <code>with open(...)</code> for file handles, JSON/CSV modules for structured data, and catch specific exceptions. Validate user input and avoid logging secrets.</p><h2>Level 7 — OOP and type hints</h2><pre>from dataclasses import dataclass
+
+@dataclass
+class Device:
+    hostname: str
+    ip_address: str
+    managed: bool = True
+
+lab_pc = Device("lab-pc", "192.168.56.10")
+print(lab_pc.hostname)</pre><p>Learn classes, composition, inheritance only when useful, dataclasses, type hints, iterators, generators and context managers.</p><h2>Level 8 — Professional Python</h2><ul><li>Virtual environments: <code>python -m venv .venv</code>; activate using your OS-specific command.</li><li>Dependencies, pinned versions, packaging, project layout and reproducible builds.</li><li>Testing with <code>unittest</code> or pytest; test normal, boundary and error cases.</li><li>Debugging, logging, profiling, code review, linting and formatting.</li><li>HTTP APIs with timeouts, retries and careful handling of credentials.</li><li>Concurrency: understand asyncio, threads and processes before choosing one.</li><li>Databases, SQL parameters, transactions and schema migrations.</li></ul><h2>Level 9 — Safe automation project</h2><div class="panel"><p>Build a local file inventory tool. It reads filenames and sizes from a folder you choose and writes a CSV report. It does not alter or upload files.</p><pre>from pathlib import Path
+import csv
+
+root = Path("practice-files")
+output = Path("inventory.csv")
+root.mkdir(exist_ok=True)
+
+with output.open("w", newline="", encoding="utf-8") as f:
+    writer = csv.writer(f)
+    writer.writerow(["name", "bytes"])
+    for item in sorted(root.iterdir()):
+        if item.is_file():
+            writer.writerow([item.name, item.stat().st_size])
+
+print(f"Report written to {output.resolve()}")</pre><p>Create a few sample files inside <code>practice-files</code>, run the script and inspect the CSV.</p></div><h2>Level 10 — Advanced topics</h2><p>Study decorators, descriptors, protocols, advanced typing, async I/O, profiling, memory behavior, secure deserialization, cryptographic library usage, CI, packaging and API design. For security work, practise parsing logs, validating URLs, checking file hashes and interacting with lab APIs—never build tools for unauthorized access.</p><h2>Recommended capstone sequence</h2><ol><li>CLI calculator and quiz.</li><li>File organizer with dry-run mode and tests.</li><li>Log summarizer with CSV/JSON output.</li><li>HTTP status checker for a list of explicitly authorized lab URLs, with timeouts and rate limits.</li><li>Package one project with README, tests, error handling and a clear license.</li></ol><p><a href="index.html">← Back to all learning cards</a></p></main><footer>VectorEdgeMax · Learn ethically. Build responsibly. · © 2026</footer></body></html>
