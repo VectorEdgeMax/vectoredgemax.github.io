@@ -1,0 +1,68 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Learn safe, practical snippets for everyday system tasks, automation, diagnostics and more advanced maintainable scripts."><meta name="theme-color" content="#070b12"><title>Useful Code: Ready-to-Use Examples by Level | VectorEdgeMax</title><style>@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap');:root{--bg:#050b12;--panel:#0d1724;--cyan:#36e5ff;--green:#0efb8a;--text:#ebf7ff;--muted:#9bb5ca;--border:#1f2e3d}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.8 'Share Tech Mono',monospace}a{color:var(--cyan)}.wrap{width:min(980px,92%);margin:auto}header{position:sticky;top:0;background:#050b12ed;border-bottom:1px solid #36e5ff66;padding:15px;z-index:2}.brand,h1,h2,h3{font-family:Orbitron,sans-serif}.brand{color:white;text-decoration:none;font-weight:bold;letter-spacing:2px}.brand span,h1,h2{color:var(--cyan)}main{padding:35px 0 70px}h1{font-size:clamp(2rem,5vw,3.4rem);line-height:1.3}h2{margin-top:42px;border-bottom:1px solid #36e5ff44;padding-bottom:8px}h3{color:var(--green)}p,li{color:var(--muted)}.panel{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:18px;margin:16px 0}.notice{border-left:3px solid var(--green);padding:12px 17px;background:#0efb8a0a;color:var(--muted)}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#02070c;border:1px solid var(--border);border-radius:9px;padding:15px;color:var(--green);overflow-x:auto}code{color:var(--green)}.level{color:var(--green);letter-spacing:1px;font-size:.8rem}footer{border-top:1px solid var(--border);text-align:center;padding:25px;color:var(--muted)}.toc a{display:inline-block;margin:5px 12px 5px 0}.back{float:right}@media(max-width:600px){.back{float:none;display:block;margin-top:8px}main{padding-top:20px}}</style></head><body><header><div class="wrap"><a class="brand" href="index.html">VECTOR<span>EDGEMAX</span></a><a class="back" href="index.html">← Home</a></div></header><main class="wrap"><p class="level">VECTOR EDGEMAX / LEARNING PATH</p><h1>Useful Code: Ready-to-Use Examples by Level</h1><p>Learn safe, practical snippets for everyday system tasks, automation, diagnostics and more advanced maintainable scripts.</p><div class="notice">Study in order, practise in a lab you own or have explicit permission to test, take notes, and revisit each level. Examples are educational; never run security tests against systems without authorization.</div>
+<h2>Level 1 — Everyday commands</h2><p>Start with commands that inspect information rather than changing the system.</p><pre># Linux
+pwd
+ls -lah
+df -h
+free -h
+uptime
+
+# Windows PowerShell
+Get-Location
+Get-ChildItem
+Get-PSDrive
+Get-ComputerInfo
+Get-Process | Sort-Object CPU -Descending | Select-Object -First 10</pre><h2>Level 2 — Python system summary</h2><pre>import platform
+from datetime import datetime
+
+print("OS:", platform.system(), platform.release())
+print("Machine:", platform.machine())
+print("Python:", platform.python_version())
+print("Time:", datetime.now().isoformat(timespec="seconds"))</pre><h2>Level 3 — Safe folder inventory</h2><pre>from pathlib import Path
+
+root = Path("practice-files")
+root.mkdir(exist_ok=True)
+
+for item in sorted(root.iterdir()):
+    if item.is_file():
+        print(f"{item.name}: {item.stat().st_size} bytes")
+    elif item.is_dir():
+        print(f"{item.name}/ [directory]")</pre><h2>Level 4 — Hash files for integrity</h2><pre>from pathlib import Path
+import hashlib
+
+def sha256_file(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as stream:
+        for chunk in iter(lambda: stream.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+sample = Path("sample.txt")
+if sample.is_file():
+    print(sha256_file(sample))
+else:
+    print("Create sample.txt first.")</pre><h2>Level 5 — Read and summarize a log</h2><pre>from pathlib import Path
+from collections import Counter
+
+path = Path("sample.log")  # use a copied lab log
+if path.is_file():
+    counts = Counter(line.split()[0] for line in
+                     path.read_text(errors="replace").splitlines()
+                     if line.split())
+    for token, count in counts.most_common(10):
+        print(count, token)
+else:
+    print("Put a sample log beside this script.")</pre><h2>Level 6 — Robust script patterns</h2><pre>#!/usr/bin/env python3
+import argparse
+import logging
+from pathlib import Path
+
+parser = argparse.ArgumentParser(description="Count files in a folder")
+parser.add_argument("folder", type=Path)
+args = parser.parse_args()
+logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
+
+if not args.folder.is_dir():
+    parser.error("folder must be an existing directory")
+
+files = [p for p in args.folder.iterdir() if p.is_file()]
+logging.info("Found %d files", len(files))</pre><h2>Level 7 — Testing and maintenance</h2><ul><li>Add type hints, docstrings, clear errors and meaningful exit codes.</li><li>Use a virtual environment and pin dependencies for repeatable runs.</li><li>Write unit tests for empty folders, permission errors, unusual filenames and missing input.</li><li>Prefer dry-run mode before file modifications; create backups for destructive operations.</li><li>Never hardcode passwords/API keys or disable certificate verification to “fix” TLS errors.</li></ul><h2>Level 8 — Advanced project ideas</h2><ol><li>Log analyzer that redacts IPs or usernames where required.</li><li>Backup verifier that checks hashes and restore procedures.</li><li>Local service health checker with explicit host allowlists, timeouts and low request rates.</li><li>Configuration audit that reports risky settings without changing them automatically.</li><li>Package a command-line tool with tests, CI, documentation and versioning.</li></ol><div class="notice">Before running any script, read it, understand which files or services it touches, and test against disposable sample data first.</div><p><a href="index.html">← Back to all learning cards</a></p></main><footer>VectorEdgeMax · Learn ethically. Build responsibly. · © 2026</footer></body></html>
