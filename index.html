@@ -648,38 +648,29 @@
 
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
+
 <script>
 
-  // Shared page transition for internal links and all guide cards.
   (() => {
     const overlay = document.createElement('div');
     overlay.className = 'vem-page-transition';
     overlay.setAttribute('aria-hidden', 'true');
     document.body.appendChild(overlay);
-
     let navigating = false;
     document.querySelectorAll('a[href]').forEach((link) => {
       link.addEventListener('click', (event) => {
         const href = link.getAttribute('href');
-        if (!href || href.startsWith('#') || link.target === '_blank' ||
-            event.defaultPrevented || event.button !== 0 ||
-            event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
-
+        if (!href || href.startsWith('#') || link.target === '_blank' || event.defaultPrevented ||
+            event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
         let destination;
         try { destination = new URL(link.href, window.location.href); } catch (_) { return; }
         if (destination.origin !== window.location.origin ||
             (destination.pathname === window.location.pathname && destination.hash)) return;
-
         event.preventDefault();
         if (navigating) return;
         navigating = true;
-
-        if (link.classList.contains('card') && typeof window.playCardSound === 'function') {
-          window.playCardSound();
-        } else if (typeof window.playNavSound === 'function') {
-          window.playNavSound();
-        }
-
+        if (link.classList.contains('card') && typeof window.playCardSound === 'function') window.playCardSound();
+        else if (typeof window.playNavSound === 'function') window.playNavSound();
         overlay.classList.add('is-active');
         window.setTimeout(() => { window.location.href = destination.href; }, 360);
       });
