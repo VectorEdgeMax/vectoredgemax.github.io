@@ -23,7 +23,7 @@ a:hover{ text-shadow:0 0 9px #ff202b66}
 .card:hover,.guide-card:hover,.tool-card:hover{border-color:#ff6b73!important;box-shadow:0 0 22px #ff102533,inset 0 0 0 1px #ff303b66;transform:translateY(-2px)}
 h1,h2,h3,.section-title{color:#fff;text-shadow:0 0 10px #ff202b55}
 button,.button,.btn,input[type=submit]{border-color:#ff303b}
-.terminal-panel{border:2px solid #ff202b!important;border-radius:18px 3px 16px 16px!important;box-shadow:inset 0 0 0 2px #5c0a12,0 0 24px #ff001033}
+.terminal-panel{border:2px solid #f11923!important;border-radius:18px 3px 16px 16px!important;box-shadow:inset 0 0 0 2px #5c0a12,0 0 24px #ff001033}
 .terminal-panel:before{inset:5px;border:1px solid #ff303b}
 @media(max-width:700px){body{background-attachment:scroll;background-position:center top}.card,.guide-card,.tool-card,.content-card{border-radius:10px 2px 10px 10px!important}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
@@ -31,7 +31,7 @@ button,.button,.btn,input[type=submit]{border-color:#ff303b}
 
 /* Dashboard refinement: wide horizontal tiles, clipped bottle-cap corner, red double rails */
 body{background:#020203 url('Neon%20Shadow%20Hacker%20Command%20Center.png') center top/cover fixed no-repeat!important}
-body:before{background:linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,.78)),repeating-linear-gradient(135deg,transparent 0 55px,rgba(255,0,20,.035) 56px 58px)!important}
+body:before{background:linear-gradient(180deg,rgba(240, 233, 233, 0.25),rgba(0,0,0,.78)),repeating-linear-gradient(135deg,transparent 0 55px,rgba(255,0,20,.035) 56px 58px)!important}
 .wrap{width:min(1540px,96%)}
 .layout{grid-template-columns:minmax(0,1.6fr) minmax(330px,.8fr);gap:18px}
 .tiles{grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
@@ -46,7 +46,7 @@ body:before{background:linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,.78)),r
 .panel:before{content:"";position:absolute;inset:5px;border:1px solid #ff3541;clip-path:polygon(0 0,calc(100% - 26px) 0,100% 26px,100% 100%,0 100%);pointer-events:none}
 .terminal{border:2px solid #ff202b!important;border-radius:13px 2px 13px 13px!important;box-shadow:inset 0 0 0 2px #620912,0 0 24px #ff001033}
 .termbar{border-bottom:1px solid #ff303b;color:#ff858b}
-.promptrow{border-top:1px solid #ff303b}
+.promptrow{border-top:1px solid #d80812}
 .promptrow input{border-color:#8b202b;background:#030304}
 .promptrow button,.switch{border-color:#ff303b;background:#26060a;color:#ff7c84}
 .switch.active{background:#ff202b;color:#fff}
@@ -198,10 +198,10 @@ header {
 }
 /* Keep only the inner terminal glass blur */
 .layout > section.panel:first-child .terminal {
-  background: rgba(2,3,5,.3) !important;
-  background-color: rgba(2,3,5,.3) !important;
-  backdrop-filter: blur(14px) !important;
-  -webkit-backdrop-filter: blur(14px) !important;
+  background: rgba(14, 16, 20, 0.3) !important;
+  background-color: rgba(4, 11, 24, 0.3) !important;
+  backdrop-filter: blur(1px) !important;
+  -webkit-backdrop-filter: blur(1px) !important;
 }
 
 
